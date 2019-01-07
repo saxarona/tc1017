@@ -1,0 +1,245 @@
+\documentclass[spanish]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, mexico]{babel}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{ragged2e}
+\usepackage{mathrsfs}
+\usepackage{csquotes}
+
+% \usepackage{tikz}
+
+% \usetikzlibrary{fit, shapes, arrows}
+
+% \usepackage{courier}
+% \usepackage{subfigure}
+% \usepackage{enumerate}
+% \usepackage{algorithmic}
+% \usepackage{algorithm}
+
+% \usepackage{listings}
+% \usepackage{lstlinebgrd}
+
+\usetheme{Boadilla}
+\usefonttheme[onlymath]{serif}
+
+\newcommand\blfootnote[1]{%
+\begingroup
+\renewcommand\thefootnote{}\footnote{#1}%
+\addtocounter{footnote}{-1}%
+\endgroup
+}
+
+% Sets the templates
+\definecolor{navyblue}{RGB}{0, 0, 128}
+\definecolor{crimson}{RGB}{128, 16, 0}
+
+\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{theorems}[numbered]
+
+\setbeamercolor{title}{fg=navyblue, bg=white}
+\setbeamercolor{frametitle}{fg=navyblue, bg=white}
+\setbeamercolor{structure}{fg=navyblue}
+\setbeamercolor{button}{fg=white,bg=navyblue}
+
+\setbeamercovered{transparent}
+
+\title{Conceptos matemáticos preliminares}
+\subtitle{Solución de Problemas con Programación \\ (TC1017)}
+\author{
+    \texorpdfstring{
+        \begin{center}
+            M.C. Xavier Sánchez Díaz \\
+            \href{mailto:sax@tec.mx}{\texttt{sax@tec.mx}}
+        \end{center}
+    }
+    {M.C. Xavier Sánchez Díaz}
+}
+
+\institute[Tecnológico de Monterrey]{\includegraphics[scale=0.5]{../img/logo}}
+\date{}
+
+\begin{document}
+
+\setlength{\rightskip}{0pt}
+
+\begin{frame}[plain]
+    \titlepage        
+\end{frame}
+
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+\section{¿Qué estudiamos?}
+
+\begin{frame}{¿Qué estudia un ingeniero?}{¿Qué estudiamos?}
+    La ingeniería se enfoca, en esencia, en la resolución de \alert{problemas}. \pause
+    
+    \bigskip
+
+    \begin{itemize}
+        \item<2-> ¿Qué es un problema?
+        \item<3-> ¿Qué tipos de problemas existen?
+        \item<4-> ¿Qué problemas podrían presentarse en tu área de trabajo?
+    \end{itemize}
+
+    \bigskip
+
+    \onslide<5->{
+        \begin{center}
+            \Large ¿Qué necesito para poder resolverlos?
+        \end{center}
+    }
+\end{frame}
+
+\begin{frame}{Nuestras herramientas}{¿Qué estudiamos?}
+    Para resolver los problemas del día a día, necesitamos de un conjunto de abstracciones que nos permita hacer tareas de todo tipo: \pause
+
+    \bigskip
+
+    \begin{columns}
+        \begin{column}{0.33\textwidth}
+            \begin{center}
+                \begin{itemize}
+                    \item Ordenar
+                    \item Clasificar
+                    \item Agrupar
+                    \item Repetir
+                \end{itemize}
+            \end{center}
+        \end{column}
+        \begin{column}{0.33\textwidth}
+            \begin{center}
+                \begin{itemize}
+                    \item Decidir
+                    \item Medir
+                    \item Visualizar
+                    \item Interpretar
+                \end{itemize}
+            \end{center}
+        \end{column}
+        \begin{column}{0.33\textwidth}
+            \begin{center}
+                \begin{itemize}
+                    \item Predecir
+                    \item Controlar
+                    \item Optimizar
+                    \item Calcular
+                \end{itemize}                
+            \end{center}
+        \end{column}
+    \end{columns} \pause
+    
+    \bigskip
+
+    \begin{center}
+        \Large
+        Las \alert{matemáticas} nos permiten hacer todo eso y más.
+    \end{center}
+
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{center}
+        \includegraphics[width=0.97\textwidth]{../img/purity.png}
+    \blfootnote{\textit{Purity}, de xkcd: \url{https://xkcd.com/435/}}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Los sabores de las matemáticas}{¿Qué estudiamos?}
+    
+    Existen muchas áreas de estudio dentro de las matemáticas: \pause
+
+    \bigskip
+
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item<2-> \alert<7>{Aritmética}
+                \item<3-> \alert<8>{Álgebra}
+                \item<4-> \alert<9>{Probabilidad}
+                \item<5-> \alert<10>{Estadística}
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \only<7>{
+                $2 + 6 / 3 - 12 + 70 = 62$
+            }
+            \only<8>{
+                $2x + 3y = z^2$
+            }
+            \only<9>{
+                $P(B|A) = \frac{P(A|B)P(B)}{P(A)}$
+            }
+            \only<10>{
+                $\mathbb{E}[X] = \bar{x}$
+            }
+        \end{column}
+    \end{columns}
+
+    \bigskip
+    
+    \onslide<6->{Y otras más como lógica, cálculo, combinatoria, teoría de números, teoría de grupos, geometría, topología...}
+\end{frame}
+
+\begin{frame}{¿Y esto cómo lo aplicamos?}{¿Qué estudiamos?}
+    Las \alert{ciencias computacionales} (que estudian el cómputo) se encargan de crear un puente entre los fundamentos matemáticos y las aplicaciones al mundo real: el \textbf{cómo}. \pause
+
+    \bigskip
+
+    Tener una noción de sus herramientas y conceptos ayudará a que seamos más eficientes en nuestras respectivas áreas del conocimiento. \pause
+
+    \bigskip
+
+    \begin{center}
+        \Large
+        ¿Qué es lo que más te llama la atención del índice analítico?
+    \end{center}
+\end{frame}
+
+\section{Fundamentos de aritmética}
+
+\begin{frame}{¿Aritmética?}{Fundamentos de aritmética}
+    
+    \blfootnote{Sherman, Lynda y Weisstein, Eric W. ``Arithmetic.'' De MathWorld--A Wolfram Web Resource: \url{http://mathworld.wolfram.com/Arithmetic.html}}
+
+    \begin{block}{Definición}
+        \begin{displayquote}
+            Arithmetic is the branch of mathematics dealing with \textbf<2->{integers}, or more generally, \alert<2->{numerical computation}.
+            Arithmetical operations include \textbf<2->{addition}, \textbf<2->{congruence} calculation, \textbf<2->{division}, factorization, \textbf<2->{multiplication}, \textbf<2->{power} computation, \textbf<2->{root} extraction, and \textbf<2->{subtraction}.
+        \end{displayquote}
+    \end{block} \pause
+    
+    \bigskip
+
+    \begin{center}
+        \Large
+        ¿Qué significan estos conceptos claves?
+    \end{center}
+\end{frame}
+
+% What we study
+% % Arithmetic
+% % Algebra
+% % Stats and Probability
+% % Other interesting things like Logic, Calculus, Number Theory, Geometry, Topology
+
+% Arithmetic basics
+
+% \section*{Referencias}
+
+% \begin{frame}[t]{Referencias}
+    % \nocite{bibID01}
+    % \nocite{bibID02}
+
+    % \bibliographystyle{IEEE}
+    % \bibliography{biblio}
+% \end{frame}
+
+\end{document}
