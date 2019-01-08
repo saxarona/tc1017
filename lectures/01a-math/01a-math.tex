@@ -1,7 +1,7 @@
 \documentclass[spanish]{beamer}
 
 \usepackage[utf8]{inputenc}
-\usepackage[spanish, mexico]{babel}
+%\usepackage[spanish, mexico]{babel}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{color}
@@ -220,7 +220,106 @@
 
     \begin{center}
         \Large
-        ¿Qué significan estos conceptos claves?
+        ¿Qué significan estos conceptos clave?
+    \end{center}
+\end{frame}
+
+\begin{frame}{Conceptos clave}{Fundamentos de aritmética}
+    \begin{itemize}
+        \item<1-> {\color<8->{magenta} \textbf{Adición} (Suma): \hfill $2 + 5 = 5 + 2 = 7$}
+        \item<2-> {\color<8->{magenta} \textbf{Sustracción} (Resta): \hfill $10 - 12 = -12 + 10 = -2$}
+        \item<3-> {\color<9->{blue} \textbf{Producto} (Multiplicación): \hfill $12 \times 5 = 5 * 12 = 12 \cdot 5 = (5)(4)(3) = 60$}
+        \item<4-> {\color<9->{blue} \textbf{División}: \hfill $60 / 15 =  \frac{60}{15} = \frac{(5)(4)(3)}{(5)(3)} = \frac{4}{1}$}
+        \item<5-> {\color<10->{orange} \textbf{Potencia}: \hfill $2^{10} = 2^5 \cdot 2^5 = 2 \cdot 2 \cdot 2 \cdot 2^7 = 1024$}
+        \item<6-> {\color<10->{orange} \textbf{Raíz}: \hfill $\sqrt{100} = 100^{\frac{1}{2}} = \sqrt{2 \cdot 2 \cdot 5 \cdot 5} = \sqrt{2} \sqrt{2} \sqrt{5} \sqrt{5} = 10$}
+        \item<7-> \textbf{Congruencia} (Módulo): \hfill $10 \mod 2 = 0, 15 \mod 4 = 3, 19 \mod 3 = 1$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Jerarquía de operaciones}{Fundamentos de aritmética}
+    Es importante saber que no todas las operaciones tienen el mismo \textit{peso}.
+    Algunas operaciones se hacen antes, y otras se hacen después. Por ejemplo: \pause
+
+    \only<2>{$$2 \times 3 + 5 \neq 2 \times (3+5)$$} \pause
+
+    \only<3->{
+        \bigskip
+        
+        $2 \times 3 + 5 = 6 + 5 = 11$ \pause \hfill $2 \times (3+5) = 2 \times 8 = 16$
+        
+        \bigskip
+        \pause}
+
+    Claramente hay una diferencia en el resultado. La mejor manera de recordar qué va primero es separar por \alert{términos}. \pause Un \alert{término} es una \textit{parte} de una operación. En una \textbf{expresión}, los términos se separan usando los operadores de \textbf{\color{magenta} suma o resta}:
+
+    $$x^2 {~\color{magenta}+~} 2x {~\color{magenta}+~} 1 = 3x^3 {~\color{magenta}+~} 2x^2 {~\color{magenta}+~} 7x {~\color{magenta}-~} 10$$ \pause
+
+    \begin{center}
+        \Large
+        ¿Cuántos términos hay de cada lado de la ecuación?
+    \end{center}
+    
+\end{frame}
+
+\begin{frame}{Jerarquía de operaciones}{Fundamentos de aritmética}
+    Al separar por \alert{términos}, podemos ver la nueva expresión como una \textbf{\color{magenta} suma o resta} de un montón de operaciones más pequeñas que podemos \textit{resolver} individualmente: \pause
+
+    $$\alert<3>{x^2} + \alert<4>{2x} + \alert<5>{1} = \alert<6>{3x^3} + \alert<7>{2x^2} + \alert<8>{7x} - \alert<9>{10}$$ \pause
+
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item<3-> $x^2$
+                \item<4-> $2x$
+                \item<5-> $1$
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item<6-> $\mathbf{3x^3}$
+                \item<7-> $\mathbf{2x^2}$
+                \item<8-> $7x$
+                \item<9-> $-10$
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Jerarquía de operaciones}{Fundamentos de aritmética}
+    ``El exponente y las raíces van primero''---suelen decir---pero realmente todo va a la vez: \pause
+
+    \bigskip
+    
+    \begin{center}
+        $3x^3 = 3 \cdot x \cdot x \cdot x$ \pause \hfill $2x^2 = 2 \cdot x \cdot x$
+    \end{center} \pause
+    
+    Finalmente, agrupamos todos los términos \textbf{\color{magenta} sumando o restando} (según sea el caso). \pause
+
+    \bigskip
+
+    \begin{center}
+        \Large
+        ¿Tenemos que resolver las operaciones manualmente?
+    \end{center}
+\end{frame}
+
+\section{Conceptos básicos de programación}
+
+\begin{frame}{¿Programación?}{Conceptos básicos de programación}
+    \begin{displayquote}
+        Falling in love with code means falling in love with problem solving and being a part of a forever ongoing conversation.
+    \end{displayquote} \hfill Kathryn Barrett, O'Reily Media. \pause
+
+    \bigskip
+
+    Un lenguaje de programación es una herramienta computacional para resolver problemas. \pause
+
+    \bigskip
+
+    \begin{center}
+        \Large
+        ¿Cuáles de los problemas que mencionamos antes se pueden resolver con un lenguaje de programación?
     \end{center}
 \end{frame}
 
