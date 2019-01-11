@@ -104,89 +104,40 @@ left=5mm,right=5mm,top=5mm,bottom=15mm}
 \begin{multicols*}{2}
 
 
-\section*{Vectores Libres}
+\section*{Términos importantes}
 
-Dados dos puntos en el plano (A y B, podemos trazar  una flecha que vaya del primero al segundo. A esta flecha la llamaremos vector (fijo) y se denota $\overrightarrow{AB}$ o $\overrightarrow{v}$.
+\begin{description}
+  \item [Arreglo.] Conjunto ordenado de datos, usualmente sinónimo de `Vector', que es un arreglo de una dimensión:
+    $$\begin{bmatrix}
+      1 & 2 & 3 & 4
+    \end{bmatrix}$$
+  \item [Bucle.] Estatuto específico para hacer ciclos.
+  \item [Cadena de caracteres.] Un `arreglo de letras o números'.
+  \item [Condicional.] Un estatuto específico para tomar decisiones.
+  \item [Entero.] Todos los números sin parte decimal. Un número $z$ es parte de los enteros que se representan con $\mathbb{Z}$.
+  \item [Estatuto.] Cualquier expresión válida y completa en un lenguaje de programación.
+  \item [Estructura.] Abstracción para representar datos. Los arreglos, las matrices y los árboles son estructuras de datos.
+  \item [Función.] Una función es una `caja' a la cuál metes \textit{algo} y se transforma a \textit{otra cosa}. Para la función $f(x) = 2x+3$, si metes $x=5$, entonces la función lo convierte en $13$, pues $f(5)=2(5)+3 = 13$.
+  \item [Imprimir.] Mostrar información en pantalla.
+  \item [Iteración.] Una vuelta (ejecución) en un ciclo.
+  \item [Matriz.] Arreglo de dos dimensiones. Usualmente visualizado como una tabla:
+    $$\begin{bmatrix}
+      2 & 3 & 4 \\
+      1 & 2 & 3 \\
+      9 & 2 & 3
+    \end{bmatrix}$$
+  \item [Operador.] Símbolo reservado que es un alias para una función de dos parámetros. $+,-,/,*,:$ son operadores. La exprsión $2+5$ es la mismo que al escribir $+(2,5)$ en algunos lenguajes.
+  \item [Palabra reservada]. Palabras que no pueden ser usadas como nombres, ya que significan algo para el lenguaje de programación.
+  \item [Parámetro.] El \textit{algo} que metes a la función. En la función \texttt{max(A)}, \texttt{A} es el parámetro. Un sinónimo es \textit{argumento}.
+  \item [Procedimiento.] Una rutina, específicamente sin valor de retorno.
+  \item [Punto Flotante.] Representación computacional de cada uno de los números con parte decimal (incluso si esa parte es 0).
+  \item [Rutina.] Una secuencia ordenada de instrucciones, usualmente con nombre, que no necesariamente tiene un valor de retorno.
+  \item [Tipo.] Clasificación de una variable dependiendo del tipo de dato que vaya a guardar.
+  \item [Valor de Retorno.] Aquello que se \textit{devuelve} al terminar una función. El resultado.
+  \item [Variable.] Dirección de memoria que guarda un valor y a la cual se le asigna un nombre, para poder referenciarla fácilmente después.  
+\end{description}
 
-
-\begin{tikzpicture}[scale=0.75]
-\coordinate (A) at (1,2);
-\coordinate (B) at (6,4);
-
-\draw [fill=blue] (A) circle (2pt) node [left] {A};
-\draw [fill=blue] (B) circle (2pt) node [left] {B};
-
-\draw [->, red, thick]  (A) -- node[below] {$\overrightarrow{AB}$} (B); 
-\end{tikzpicture}
-
-
-
-\begin{itemize}
-\item \textbf{Módulo}: La longitud del vector
-\item \textbf{Dirección}: La recta que contiene al vector y cualquiera de sus paralelas
-\item \textbf{Sentido}: El que va del origen al final o su contrario. Viene representado por punta "la cabeza de la flecha"
-\end{itemize}
-Dos vectores (fijos) son \textbf{equipolentes} cuando tienen el mismo módulo, misma dirección y mismo sentido. Un vector fijo y todos sus equipolentes forman lo que de denomina un \textbf{vector libre}. Un vector libre viene determinado por sus coordenadas:
-
-\section*{Coordenadas y módulo de un vector} Un vector se puede ver como el desplazamiento que tenemos que hacer horizontalmente y verticalmente para ir del origen al extremo del mismo. Al desplazamiento horizontal le llamaremos primera coordenada y al vertical, segunda.
-
-\begin{itemize}
-\item Dados $A(x_1,y_2),B(x_2,y_2) \to  \overrightarrow{AB}(x_2-x_1,y_2-y_1)$
-\item A partir de las coordenadas del punto podremos calcular su módulo. Dados $\overrightarrow{u}(x,y), \to  \left|\overrightarrow{u}\right|=\sqrt{x^2+y^2}$
-\end{itemize}
-
-
-
-
-\subsection{Ejemplo}
-
-Determina las coordenadas y el módulo del vector libre cuyo representante es el vector que va de $A(1,1)$ a $B(7,5)$
-
-\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm, scale=0.8]
-\draw [color=lightgray,dash pattern=on 1pt off 1pt, xstep=1cm,ystep=1cm] (-0.6129302567150502,-0.43158220601634095) grid (9.010648940148005,6.1);
-\draw[->,color=black] (-0.6129302567150502,0) -- (9.010648940148005,0);
-\foreach \x in {,1,2,3,4,5,6,7,8,9}
-\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
-\draw[->,color=black] (0,-0.43158220601634095) -- (0,6.1);
-\foreach \y in {,1,2,3,4,5,6}
-\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
-\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
-\clip(-0.6129302567150502,-0.43158220601634095) rectangle (9.010648940148005,7.8783927087822985);
-\draw [->,line width=1.5pt,color=red] (1,1) -- node[above,fill=white]{$\overrightarrow{v}=\left(6,4 \right) \land \left|\overrightarrow{v}\right|=\sqrt{6^2+4^2}=\sqrt{52}$} (7,5);
-\draw [-,line width=2pt,color=blue] (1,1) -- node[below]{$7-1=6$} (7,1);
-\draw [-,line width=2pt,color=orange] (7,1) -- node[right]{$5-1=4$}(7,5);
-
-\draw [fill=yellow, color=blue]  (1,1) circle (2pt) node[above] {$A = (1, 1)$};
-\draw [fill=yellow, color=blue]  (7,5) circle (2pt) node[above] {$B = (7, 5)$};
-\end{tikzpicture}
-
-
-
-\section*{Operaciones con vectores}
-\subsection{Producto de un número por un vector}
-\paragraph*{Definición}
-Dado $k \in \mathbb{R}$ y $\overrightarrow{u}$ se define $k\cdot\overrightarrow{u}$ como un $\overrightarrow{v}$ que:\begin{itemize}
-\item $\left|\overrightarrow{v}\right|=\left|k\right|\cdot\left|\overrightarrow{u}\right|$
-\item $ \overrightarrow{v}\samedir\overrightarrow{u}$
-\item Mismo sentido que $\overrightarrow{u}$ si $k>0$ o sentido contrario si $k>0$
-\end{itemize}Además se cumple que si $\overrightarrow{u}(x_1,y_1)\to k\overrightarrow{u}(k\cdot x_1,k\cdot y_1)$
-
-\subsubsection{Ejemplos}\begin{tikzpicture}[scale=0.75]
-\draw [->, red, thick, fill=red]  (1,1) -- node[left] {$\overrightarrow{u}(1,2)$} (2,3); 
-\draw [->, blue, thick, fill=blue]  (2,-1) -- node[left] {$2\overrightarrow{u}(2,4)$} (4,3); 
-\draw [->, gray, thick, fill=blue]  (6,1) -- node[left] {$\frac{1}{2}\overrightarrow{u}(0.5,1)$} (6.5,2); 
-\draw [->, orange, thick, fill=blue]  (8,3) -- node[right] {$-\frac{3}{2}\overrightarrow{u}(1.5,3)$} (6.5,0); 
-\end{tikzpicture}
-
-\subsection{Suma y resta de vectores}
-\paragraph*{Definición} Dados $\overrightarrow{u}$ y $\overrightarrow{v}$ se define la suma como el vector que   si los ponemos seguidos va del origen del primer vector al extremo del segundo vector.
-
-\begin{tikzpicture}[scale=0.75]
-\draw [->, red, thick, fill=red]  (1,0) -- node[left] {$\overrightarrow{u}(1,2)$} (2,2); 
-\draw [->, blue, thick, fill=blue]  (2,2) -- node[left] {$\overrightarrow{v}(4,1)$} (6,3); 
-\draw [->, orange, thick, fill=blue]  (1,0) -- node[right] {$\overrightarrow{u}+\overrightarrow{v}(5,3)$} (6,3); 
-
-\end{tikzpicture}
+\section*{}
 
 \end{multicols*}
 

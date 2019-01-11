@@ -1,0 +1,20 @@
+\frametitle{Pidiendo ayuda}\framesubtitle {Lo básico}
+    Para cualquier duda, uno siempre debe pedir ayuda. Esto se logra con la función \lstinline[style=Matlab-editor]!help!:
+    \pause
+
+    \bigskip
+
+    \begin{lstlisting}
+    >> help mod
+    mod    Modulus after division.
+        mod(x,y) returns x - floor(x./y)...
+
+        The statement "x and y are con...
+
+        By convention:
+            mod(x,0) is x.
+            mod(x,x) is 0.
+            mod(x,y), for x~=y...
+
+        See also rem...
+    \end{lstlisting}
