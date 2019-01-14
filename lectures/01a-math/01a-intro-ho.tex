@@ -1,0 +1,399 @@
+\documentclass[spanish, handout]{beamer}
+
+\usepackage[utf8]{inputenc}
+%\usepackage[spanish, mexico]{babel}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{ragged2e}
+\usepackage{mathrsfs}
+\usepackage{csquotes}
+
+% \usepackage{tikz}
+
+% \usetikzlibrary{fit, shapes, arrows}
+
+% \usepackage{courier}
+% \usepackage{subfigure}
+% \usepackage{enumerate}
+% \usepackage{algorithmic}
+% \usepackage{algorithm}
+
+% \usepackage{listings}
+% \usepackage{lstlinebgrd}
+
+\usetheme{Boadilla}
+\usefonttheme[onlymath]{serif}
+
+\newcommand\blfootnote[1]{%
+\begingroup
+\renewcommand\thefootnote{}\footnote{#1}%
+\addtocounter{footnote}{-1}%
+\endgroup
+}
+
+% Sets the templates
+\definecolor{navyblue}{RGB}{0, 0, 128}
+\definecolor{crimson}{RGB}{128, 16, 0}
+
+\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{theorems}[numbered]
+
+\setbeamercolor{title}{fg=navyblue, bg=white}
+\setbeamercolor{frametitle}{fg=navyblue, bg=white}
+\setbeamercolor{structure}{fg=navyblue}
+\setbeamercolor{button}{fg=white,bg=navyblue}
+
+\setbeamercovered{transparent}
+
+\title{Conceptos matemáticos preliminares}
+\subtitle{Solución de Problemas con Programación \\ (TC1017)}
+\author{
+    \texorpdfstring{
+        \begin{center}
+            M.C. Xavier Sánchez Díaz \\
+            \href{mailto:sax@tec.mx}{\texttt{sax@tec.mx}}
+        \end{center}
+    }
+    {M.C. Xavier Sánchez Díaz}
+}
+
+\institute[Tecnológico de Monterrey]{\includegraphics[scale=0.5]{../img/logo}}
+\date{}
+
+\begin{document}
+
+\setlength{\rightskip}{0pt}
+
+\begin{frame}[plain]
+    \titlepage        
+\end{frame}
+
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+\section{¿Qué estudiamos?}
+
+\begin{frame}{¿Qué estudia un ingeniero?}{¿Qué estudiamos?}
+    La ingeniería se enfoca, en esencia, en la resolución de \alert{problemas}. \pause
+    
+    \bigskip
+
+    \begin{itemize}
+        \item<2-> ¿Qué es un problema?
+        \item<3-> ¿Qué tipos de problemas existen?
+        \item<4-> ¿Qué problemas podrían presentarse en tu área de trabajo?
+    \end{itemize}
+
+    \bigskip
+
+    \onslide<5->{
+        \begin{center}
+            \Large ¿Qué necesito para poder resolverlos?
+        \end{center}
+    }
+\end{frame}
+
+\begin{frame}{Nuestras herramientas}{¿Qué estudiamos?}
+    Para resolver los problemas del día a día, necesitamos de un conjunto de abstracciones que nos permita hacer tareas de todo tipo: \pause
+
+    \bigskip
+
+    \begin{columns}
+        \begin{column}{0.33\textwidth}
+            \begin{center}
+                \begin{itemize}
+                    \item Ordenar
+                    \item Clasificar
+                    \item Agrupar
+                    \item Repetir
+                \end{itemize}
+            \end{center}
+        \end{column}
+        \begin{column}{0.33\textwidth}
+            \begin{center}
+                \begin{itemize}
+                    \item Decidir
+                    \item Medir
+                    \item Visualizar
+                    \item Interpretar
+                \end{itemize}
+            \end{center}
+        \end{column}
+        \begin{column}{0.33\textwidth}
+            \begin{center}
+                \begin{itemize}
+                    \item Predecir
+                    \item Controlar
+                    \item Optimizar
+                    \item Calcular
+                \end{itemize}                
+            \end{center}
+        \end{column}
+    \end{columns} \pause
+    
+    \bigskip
+
+    \begin{center}
+        \Large
+        Las \alert{matemáticas} nos permiten hacer todo eso y más.
+    \end{center}
+
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{center}
+        \includegraphics[width=0.97\textwidth]{../img/purity.png}
+    \blfootnote{\textit{Purity}, de xkcd: \url{https://xkcd.com/435/}}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Los sabores de las matemáticas}{¿Qué estudiamos?}
+    
+    Existen muchas áreas de estudio dentro de las matemáticas: \pause
+
+    \bigskip
+
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item<2-> \alert<7>{Aritmética}
+                \item<3-> \alert<8>{Álgebra}
+                \item<4-> \alert<9>{Probabilidad}
+                \item<5-> \alert<10>{Estadística}
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \only<7>{
+                $2 + 6 / 3 - 12 + 70 = 62$
+            }
+            \only<8>{
+                $2x + 3y = z^2$
+            }
+            \only<9>{
+                $P(B|A) = \frac{P(A|B)P(B)}{P(A)}$
+            }
+            \only<10>{
+                $\mathbb{E}[X] = \bar{x}$
+            }
+        \end{column}
+    \end{columns}
+
+    \bigskip
+    
+    \onslide<6->{Y otras más como lógica, cálculo, combinatoria, teoría de números, teoría de grupos, geometría, topología...}
+\end{frame}
+
+\begin{frame}{¿Y esto cómo lo aplicamos?}{¿Qué estudiamos?}
+    Las \alert{ciencias computacionales} (que estudian el cómputo) se encargan de crear un puente entre los fundamentos matemáticos y las aplicaciones al mundo real: el \textbf{cómo}. \pause
+
+    \bigskip
+
+    Tener una noción de sus herramientas y conceptos ayudará a que seamos más eficientes en nuestras respectivas áreas del conocimiento. \pause
+
+    \bigskip
+
+    \begin{center}
+        \Large
+        ¿Qué es lo que más te llama la atención del índice analítico?
+    \end{center}
+\end{frame}
+
+\section{Fundamentos de aritmética}
+
+\begin{frame}{¿Aritmética?}{Fundamentos de aritmética}
+    
+    \blfootnote{Sherman, Lynda y Weisstein, Eric W. ``Arithmetic.'' De MathWorld--A Wolfram Web Resource: \url{http://mathworld.wolfram.com/Arithmetic.html}}
+
+    \begin{block}{Definición}
+        \begin{displayquote}
+            Arithmetic is the branch of mathematics dealing with \textbf<2->{integers}, or more generally, \alert<2->{numerical computation}.
+            Arithmetical operations include \textbf<2->{addition}, \textbf<2->{congruence} calculation, \textbf<2->{division}, factorization, \textbf<2->{multiplication}, \textbf<2->{power} computation, \textbf<2->{root} extraction, and \textbf<2->{subtraction}.
+        \end{displayquote}
+    \end{block} \pause
+    
+    \bigskip
+
+    \begin{center}
+        \Large
+        ¿Qué significan estos conceptos clave?
+    \end{center}
+\end{frame}
+
+\begin{frame}{Conceptos clave}{Fundamentos de aritmética}
+    \begin{itemize}
+        \item<1-> {\color<8->{magenta} \textbf{Adición} (Suma): \hfill $2 + 5 = 5 + 2 = 7$}
+        \item<2-> {\color<8->{magenta} \textbf{Sustracción} (Resta): \hfill $10 - 12 = -12 + 10 = -2$}
+        \item<3-> {\color<9->{blue} \textbf{Producto} (Multiplicación): \hfill $12 \times 5 = 5 * 12 = 12 \cdot 5 = (5)(4)(3) = 60$}
+        \item<4-> {\color<9->{blue} \textbf{División}: \hfill $60 / 15 =  \frac{60}{15} = \frac{(5)(4)(3)}{(5)(3)} = \frac{4}{1}$}
+        \item<5-> {\color<10->{orange} \textbf{Potencia}: \hfill $2^{10} = 2^5 \cdot 2^5 = 2 \cdot 2 \cdot 2 \cdot 2^7 = 1024$}
+        \item<6-> {\color<10->{orange} \textbf{Raíz}: \hfill $\sqrt{100} = 100^{\frac{1}{2}} = \sqrt{2 \cdot 2 \cdot 5 \cdot 5} = \sqrt{2} \sqrt{2} \sqrt{5} \sqrt{5} = 10$}
+        \item<7-> \textbf{Congruencia} (Módulo): \hfill $10 \mod 2 = 0, 15 \mod 4 = 3, 19 \mod 3 = 1$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Jerarquía de operaciones}{Fundamentos de aritmética}
+    Es importante saber que no todas las operaciones tienen el mismo \textit{peso}.
+    Algunas operaciones se hacen antes, y otras se hacen después. Por ejemplo: \pause
+
+    \only<2>{$$2 \times 3 + 5 \neq 2 \times (3+5)$$} \pause
+
+    \only<3->{
+        \bigskip
+        
+        $2 \times 3 + 5 = 6 + 5 = 11$ \pause \hfill $2 \times (3+5) = 2 \times 8 = 16$
+        
+        \bigskip
+        \pause}
+
+    Claramente hay una diferencia en el resultado. La mejor manera de recordar qué va primero es separar por \alert{términos}. \pause Un \alert{término} es una \textit{parte} de una operación. En una \textbf{expresión}, los términos se separan usando los operadores de \textbf{\color{magenta} suma o resta}:
+
+    $$x^2 {~\color{magenta}+~} 2x {~\color{magenta}+~} 1 = 3x^3 {~\color{magenta}+~} 2x^2 {~\color{magenta}+~} 7x {~\color{magenta}-~} 10$$ \pause
+
+    \begin{center}
+        \Large
+        ¿Cuántos términos hay de cada lado de la ecuación?
+    \end{center}
+    
+\end{frame}
+
+\begin{frame}{Jerarquía de operaciones}{Fundamentos de aritmética}
+    Al separar por \alert{términos}, podemos ver la nueva expresión como una \textbf{\color{magenta} suma o resta} de un montón de operaciones más pequeñas que podemos \textit{resolver} individualmente: \pause
+
+    $$\alert<3>{x^2} + \alert<4>{2x} + \alert<5>{1} = \alert<6>{3x^3} + \alert<7>{2x^2} + \alert<8>{7x} - \alert<9>{10}$$ \pause
+
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item<3-> $x^2$
+                \item<4-> $2x$
+                \item<5-> $1$
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item<6-> $\mathbf{3x^3}$
+                \item<7-> $\mathbf{2x^2}$
+                \item<8-> $7x$
+                \item<9-> $-10$
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Jerarquía de operaciones}{Fundamentos de aritmética}
+    ``El exponente y las raíces van primero''---suelen decir---pero realmente todo va a la vez: \pause
+
+    \bigskip
+    
+    \begin{center}
+        $3x^3 = 3 \cdot x \cdot x \cdot x$ \pause \hfill $2x^2 = 2 \cdot x \cdot x$
+    \end{center} \pause
+    
+    Finalmente, agrupamos todos los términos \textbf{\color{magenta} sumando o restando} (según sea el caso). \pause
+
+    \bigskip
+
+    \begin{center}
+        \Large
+        ¿Tenemos que resolver las operaciones manualmente?
+    \end{center}
+\end{frame}
+
+\section{Conceptos básicos de programación}
+
+\begin{frame}{¿Programación?}{Conceptos básicos de programación}
+    \begin{displayquote}
+        Falling in love with code means falling in love with problem solving and being a part of a forever ongoing conversation.
+    \end{displayquote} \hfill Kathryn Barrett, O'Reily Media. \pause
+
+    \bigskip
+
+    Un lenguaje de programación es una herramienta computacional para resolver problemas. \pause
+
+    \bigskip
+
+    \begin{center}
+        \Large
+        ¿Cuáles de los problemas que mencionamos antes se pueden resolver con un lenguaje de programación?
+    \end{center}
+\end{frame}
+
+\begin{frame}{Términos comunes}{Conceptos básicos de programación}
+    \begin{columns}
+        \begin{column}{0.33\textwidth}
+            \begin{itemize}
+                \item Estatuto (\textit{Statement})
+                \item Función (\textit{Function})
+                \item Rutina (\textit{Routine})
+                \item Procedimiento (\textit{Procedure})
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.33\textwidth}
+            \begin{itemize}
+                \item Parámetro (\textit{Parameter})
+                \item Argumento (\textit{Argument})
+                \item Tipo (\textit{Type})
+                \item Retorno (\textit{Return})
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.3\textwidth}
+            \begin{itemize}
+                \item Estructura (\textit{Structure})
+                \item Arreglo (\textit{Array})
+                \item Comentario (\textit{Comment})
+                \item Bucle (\textit{Loop})
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    \begin{columns}
+        \begin{column}{0.33\textwidth}
+            \begin{itemize}
+                \item Condicional (\textit{Conditional})
+                \item Palabra reservada (\textit{Reserved keyword})
+                \item Archivo (\textit{File})
+                \item Directorio (\textit{Directory})
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.33\textwidth}
+            \begin{itemize}
+                \item Gráfico (\textit{Plot})
+                \item Operador (\textit{Operator})
+                \item Iteración (\textit{Iteration})
+                \item Variable (\textit{Variable})
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.33\textwidth}
+            \begin{itemize}
+                \item Entero (\textit{Integer})
+                \item Punto Flotante (\textit{Floating-point})
+                \item Cadena de caracteres (\textit{String})
+                \item Imprimir (\textit{Print})
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% What we study
+% % Arithmetic
+% % Algebra
+% % Stats and Probability
+% % Other interesting things like Logic, Calculus, Number Theory, Geometry, Topology
+
+% Arithmetic basics
+
+% \section*{Referencias}
+
+% \begin{frame}[t]{Referencias}
+    % \nocite{bibID01}
+    % \nocite{bibID02}
+
+    % \bibliographystyle{IEEE}
+    % \bibliography{biblio}
+% \end{frame}
+
+\end{document}
