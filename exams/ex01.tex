@@ -1,0 +1,233 @@
+\documentclass[11pt, onside]{article}
+%\usepackage[a4paper]{geometry}
+\usepackage{fullpage}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, mexico]{babel}
+\usepackage{lipsum}
+\usepackage{bm}
+\usepackage{upgreek}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage{csquotes}
+\usepackage{listings}
+%\usepackage{helvet}
+\usepackage[numbered]{matlab-prettifier}
+
+
+% mathtools for: Aboxed (put box on last equation in align envirenment)
+\usepackage{microtype} %improves the spacing between words and letters
+
+%% COLOR DEFINITIONS
+
+\usepackage{xcolor} % Enabling mixing colors and color's call by 'svgnames'
+
+\definecolor{MyColor1}{rgb}{0.2,0.4,0.6} %mix personal color
+\newcommand{\textb}{\color{Black} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\blue}{\color{MyColor1} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\blueb}{\color{MyColor1} \usefont{OT1}{lmss}{b}{n}}
+\newcommand{\red}{\color{LightCoral} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\green}{\color{Turquoise} \usefont{OT1}{lmss}{m}{n}}
+
+\DeclareMathOperator{\trace}{trace}
+\DeclareMathOperator{\diag}{diag}
+
+%% FONTS AND COLORS
+
+%    SECTIONS
+
+\usepackage{titlesec}
+\usepackage{sectsty}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%set section/subsections HEADINGS font and color
+%\sectionfont{\color{Black}}  % sets colour of sections
+%\subsectionfont{\color{Black}}  % sets colour of sections
+
+%set section enumerator to arabic number (see footnotes markings alternatives)
+\renewcommand\thesection{\arabic{section}} %define sections numbering
+\renewcommand\thesubsection{\thesection\arabic{subsection}} %subsec.num.
+
+%define new section style
+\newcommand{\mysection}{
+\titleformat{\section} [runin] {\usefont{OT1}{lmss}{b}{n}\color{MyColor1}} 
+{\thesection} {3pt} {} } 
+
+
+% %	CAPTIONS
+% \usepackage{caption}
+% \usepackage{subcaption}
+% %%%%%%%%%%%%%%%%%%%%%%%%
+% \captionsetup[figure]{labelfont={color=Turquoise}}
+
+
+%		!!!EQUATION (ARRAY) --> USING ALIGN INSTEAD
+%using amsmath package to redefine eq. numeration (1.1, 1.2, ...) 
+\renewcommand{\theequation}{\thesection\arabic{equation}}
+
+\setlength\parindent{0pt}
+
+
+
+
+\makeatletter
+\let\reftagform@=\tagform@
+\def\tagform@#1{\maketag@@@{(\ignorespaces\textcolor{red}{#1}\unskip\@@italiccorr)}}
+\renewcommand{\eqref}[1]{\textup{\reftagform@{\ref{#1}}}}
+\makeatother
+\usepackage{hyperref}
+\hypersetup{colorlinks=true}
+
+% For labeling top of page on every page but first one:
+%\usepackage{fancyhdr}
+
+\newcommand{\myclass}{TC1017 -- Solución de Problemas con Programación} % Class name?
+\newcommand{\mytitle}{Examen 1} % Title of document?
+\newcommand{\mydate}{18.02.19} % The date?
+\newcommand{\myheader}{
+    \begin{flushleft}
+        \large
+        Nombre: \rule{13 cm}{0.4mm} \\
+        Matrícula: \rule{5 cm}{0.4mm} \hfill Fecha: \mydate
+    \end{flushleft}
+}
+
+\newcommand{\matlab}[1]{\lstinline[style=Matlab-bw]!#1!}
+\newcommand{\shortresponserule}{{\large\rule{5 cm}{0.3mm}}}
+
+\title{
+    \myclass \\
+    \textbf{\mytitle} \\
+    \myheader
+    \date{}
+}
+
+% You can set the date automatically by replacing "date goes here" with "\today"
+
+% \renewcommand{\rmdefault}{phv} % Arial Font
+\renewcommand{\familydefault}{\sfdefault}
+
+% \pagestyle{fancy}
+% \fancyhead{}
+% \fancyhead[CO,CE]{{\small{{\bf{\mytitle}} -- \myclass}}}
+
+\begin{document}
+\maketitle
+
+\vspace{-1.5cm}
+
+Lee cuidadosamente y contesta lo que se te pide.
+Este examen es individual.
+
+Al momento de contestar, intenta ser lo más explícito posible: se calificará con base en lo que esté escrito. %y se considerará el proceso aún cuando la respuesta final esté errada.
+Recuerda que puedes revisar material de la clase, el libro de texto o tus notas.
+Administra bien tu tiempo.
+Buena suerte.
+
+\section{Analiza el código (50\%)}
+
+Analiza cada uno de los siguientes códigos y escribe el resultado para cada caso.
+
+\subsection*{Ignis}
+
+\lstinputlisting[style=Matlab-bw]{ignis.m}
+
+\begin{itemize}
+    \item \matlab{ignis(5)} \hfill \shortresponserule
+    \item \matlab{ignis(20)} \hfill \shortresponserule
+\end{itemize}
+
+\subsection*{Lux}
+
+\lstinputlisting[style=Matlab-bw]{lux.m}
+
+\begin{itemize}
+    \item \matlab{lux(5)} \hfill \shortresponserule
+    \item \matlab{lux(8)} \hfill \shortresponserule
+\end{itemize}
+
+\pagebreak
+
+\subsection*{Aer}
+
+\lstinputlisting[style=Matlab-bw]{aer.m}
+\begin{itemize}
+    \item \matlab{aer(5)} \hfill \shortresponserule
+    \item \matlab{aer(6)} \hfill \shortresponserule
+\end{itemize}
+
+\subsection*{Aqua}
+
+\lstinputlisting[style=Matlab-bw]{aqua.m}
+\begin{itemize}
+    \item \matlab{aqua(2,2,2)} \hfill \shortresponserule
+    \item \matlab{aqua(10,3,2)} \hfill \shortresponserule
+\end{itemize}
+
+\subsection*{Cognitio}
+
+\lstinputlisting[style=Matlab-bw]{cognitio.m}
+\begin{itemize}
+    \item \matlab{cognitio(5)} \hfill \shortresponserule
+    \item \matlab{cognitio(25)} \hfill \shortresponserule
+\end{itemize}
+
+\section{Operaciones aritméticas (30\%)}
+
+Realiza correctamente las siguientes operaciones.
+
+\begin{enumerate}[label=\alph*)]
+    \item $2 + 3 * 7 - 2 =$ \hfill \shortresponserule
+    \item $5 + 4 + 3 + 2 - 10 / 2 =$ \hfill \shortresponserule
+    \item $2^3 + 8 / 2 + 4 - 30 / 5 =$ \hfill \shortresponserule
+    \item $((7 * 2 + 10 / 2 + 1) / 2 + 10)^2 =$ \hfill \shortresponserule
+    \item $(\sqrt{2} * 2 * \sqrt{2} + 2 / 2 + (2 + 2)^2)^2 =$ \hfill \shortresponserule
+    \item $27 + 15 * (3 / 3) - (3)(3^2) - 5 * 3 + 1 =$ \hfill \shortresponserule
+\end{enumerate}
+
+
+\section{Diseño de solución (20 \%)}
+
+{\small \it
+Este problema es un poco más complejo de lo que hemos resuelto hasta el momento.
+Se recomienda que avances lo más que puedas en el resto del examen antes de comenzarlo.
+}
+
+\bigskip
+
+El \textit{Biologic Space Lab} (BSL) es un laboratorio espacial que alberga especies extraterrestres para fines taxonómicos.
+El Sector 1 (SRX) del BSL tiene 3500 individuos en su base de datos, algunos de ellos necesitan oxígeno para sobrevivir, mientras que otros necesitan nitrógeno.
+Si la base de datos contiene, para cada individuo, el gas que necesita para sobrevivir (oxígeno o nitrógeno) y su consumo de gas por hora ¿Cómo calcularías cuánto oxígeno se consume en el sector SRX por segundo?
+Sugerencias para diseñar tu solución:
+\begin{enumerate}[label=\alph*)]
+    \item ¿Cuántas variables necesitas para guardar la información de un solo individuo? ¿Cuáles son? (4\%)
+    \item ¿Qué condición debe cumplirse para que tomes en cuenta el consumo de gas de un individuo? (4\%)
+    \item Haz un diagrama de flujo muy breve para ejemplificar tu procedimiento  (6\%)
+    \item Describe brevemente tu procedimiento, como si platicaras cómo resolver el problema (6\%)
+\end{enumerate}
+
+\section{Reto A (+5\%)}
+
+\begin{enumerate}[label=\alph*)]
+    \item ¿Cómo se llama la función para borrar la \textit{Command Windows}? (+2 \%)
+    \item Haz el diagrama de flujo para el \texttt{holapueblo.m} (Tarea 2) (+3 \%)
+\end{enumerate}
+
+\section{Reto B (+10\%)}
+
+Escribe el programa que escribirías en MATLAB para implementar la siguiente función:
+
+$$f(x) = %
+\begin{cases}
+    &x, \text{ si } x > 0 \\
+    & -x, \text{ si } x < 0 \\
+    &0, \text{ si } x = 0
+\end{cases}
+$$
+
+\vfill
+
+\textbf{De acuerdo con el Código de Ética del Tecnológico de Monterrey, mi desempeño en esta actividad estará guiado por la integridad académica.}
+\end{document}
