@@ -1,0 +1,153 @@
+\documentclass[]{book}
+
+%These tell TeX which packages to use.
+\usepackage{array,epsfig}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsxtra}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{color}
+\usepackage[spanish, mexico]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{helvet}
+\usepackage[framed]{matlab-prettifier}
+\newcommand{\matlab}[1]{\lstinline[style=Matlab-pyglike]!#1!}
+
+%Here I define some theorem styles and shortcut commands for symbols I use often
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\newtheorem*{rmk}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem*{joke}{Joke}
+\newtheorem{ex}{Example}
+\newtheorem*{sol}{Solution}
+\newtheorem{prop}{Proposition}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\graph}{\mathrm{graph}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\Z}{\bb{Z}}
+\newcommand{\Q}{\bb{Q}}
+\newcommand{\R}{\bb{R}}
+\newcommand{\C}{\bb{C}}
+\newcommand{\N}{\bb{N}}
+\newcommand{\M}{\mathbf{M}}
+\newcommand{\m}{\mathbf{m}}
+\newcommand{\MM}{\mathscr{M}}
+\newcommand{\HH}{\mathscr{H}}
+\newcommand{\Om}{\Omega}
+\newcommand{\Ho}{\in\HH(\Om)}
+\newcommand{\bd}{\partial}
+\newcommand{\del}{\partial}
+\newcommand{\bardel}{\overline\partial}
+\newcommand{\textdf}[1]{\textbf{\textsf{#1}}\index{#1}}
+\newcommand{\img}{\mathrm{img}}
+\newcommand{\ip}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\inter}[1]{\mathrm{int}{#1}}
+\newcommand{\exter}[1]{\mathrm{ext}{#1}}
+\newcommand{\cl}[1]{\mathrm{cl}{#1}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\vol}{\mathrm{vol}}
+\newcommand{\cnt}{\mathrm{ct}}
+\newcommand{\osc}{\mathrm{osc}}
+\newcommand{\LL}{\mathbf{L}}
+\newcommand{\UU}{\mathbf{U}}
+\newcommand{\support}{\mathrm{support}}
+\newcommand{\AND}{\;\wedge\;}
+\newcommand{\OR}{\;\vee\;}
+\newcommand{\Oset}{\varnothing}
+\newcommand{\st}{\ni}
+\newcommand{\wh}{\widehat}
+
+%Pagination stuff.
+\setlength{\topmargin}{-.3 in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{9.in}
+\setlength{\textwidth}{6.5in}
+\setlength{\itemsep}{0.45in}
+\pagestyle{empty}
+
+
+
+\begin{document}
+
+\begin{center}
+{\huge Solución de Problemas con Programación (TC1017)}\\[1.5ex]
+{\large \textbf{Homework 02}\\[1.5ex] %You should put your name here
+30.01.19} %You should write the date here.
+\end{center}
+
+\vspace{0.2 cm}
+
+\subsection*{Functions}
+
+Program in MATLAB/Octave the following functions:
+
+\begin{enumerate}[label=\alph*)]
+    \itemsep2.5ex
+    \item The function \matlab{duplica}
+    \begin{itemize}
+        \item \textbf{Receives} a single parameter, $x$.
+        \item \textbf{Returns} twice the value of $x$.
+        \item Example: \matlab{duplica(20)} $\implies$ \matlab{40}.
+    \end{itemize}
+    \item The function \matlab{sumar}
+    \begin{itemize}
+        \item \textbf{Receives} three parameters.
+        \item \textbf{Returns} the sum of the three parameters.
+        \item Example: \matlab{sumar(2,3,5)} $\implies$ \matlab{10}.
+    \end{itemize}
+    \item The function \matlab{holapueblo}
+    \begin{itemize}
+        \item \textbf{Receives} a single parameter, $x$.
+        \item \textbf{Prints}: ``Hola'' \textbf{if} $x$ is divisible by 3
+        \item \textbf{Prints}: ``Pueblo'' \textbf{if} $x$ is divisible by 5
+        \item \textbf{Prints}: ``Hola Pueblo'' \textbf{if} $x$ is divisible by 3 and by 5
+        \item \textbf{Prints}: ``No'' \textbf{if} $x$ does not fall in any other previous case.
+        \item Example: \matlab{holapueblo(30)} $\implies$ \texttt{"Hola Pueblo"}
+    \end{itemize}
+\end{enumerate}
+
+\bigskip
+
+You should upload a \textbf{ZIP} compressed file containing \textbf{three MATLAB files} with \textbf{.m} extension:
+\texttt{duplica.m}, \texttt{sumar.m} and \texttt{holapueblo.m}.
+Each file should have the corresponding function and its documentation in this format:
+
+\bigskip
+
+\begin{lstlisting}[style=Matlab-editor]
+function output = functionname(x)
+% NAME: Arturo Gonzalez
+% STUDENT ID: A01170065
+% FUNCTIONNAME output = functionname (x)
+% FUNCTIONNAME returns some magic
+% You can use it like this
+% functionname(parameters) = returnvalue
+...
+\end{lstlisting}
+
+\pagebreak
+
+{\Large Recommendations:}
+\begin{itemize}
+    \item Ensure to completely understand how \matlab{function}, \matlab{if}, \matlab{else}, \matlab{end} and \matlab{mod} commands work in MATLAB.
+    \item You may need the \matlab{elseif} command. Use \matlab{help <functionname>} to learn how to use any command you need.
+    \item To \textbf{print} a value, you can do that either with \matlab{sprintf} or \matlab{disp}. To delimit a whole phrase to print, use double quotes: \matlab{disp("Hola Pueblo Viejo y Sabio")}.
+    \item Remember that if you need to save a value to use it later, you can assign it to a variable, like this: \matlab{out = x + 7}.
+    \item Ensure you're running MATLAB in the same directory where your files are stored, take a look at the path in the top of your editor and the path in the top of the file explorer in the left.
+    \item Make sure your files are named exactly as your functions.
+    \item Use lowercase names for your files, with no spaces, symbols or accents.
+    \item Don't forget to \textbf{document your functions} and include your name and Student ID in the specified format above.
+\end{itemize}
+\end{document}
