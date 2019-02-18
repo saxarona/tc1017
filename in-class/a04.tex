@@ -1,0 +1,154 @@
+\documentclass[spanish, 10pt]{article}
+
+\usepackage[table, xcdraw]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, mexico]{babel}
+\usepackage{helvet}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{ulem}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[margin = 3 cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\usepackage{matlab-prettifier}
+\usepackage{multicol}
+
+\usetikzlibrary{arrows, shapes, trees, calc, decorations.pathreplacing, shapes.misc, positioning, automata}
+
+\setlength\parindent{0pt}
+
+\renewcommand{\familydefault}{\sfdefault}
+\newcommand{\responserule}{{\large\rule{14 cm}{0.3mm}}}
+\newcommand{\shortresponserule}{{\large\rule{5 cm}{0.3mm}}}
+\newcommand{\veryshortresponserule}{{\large\rule{3 cm}{0.3mm}}}
+\newcommand{\matlab}[1]{\lstinline[style=Matlab-pyglike]!#1!}
+
+
+% Specifications for listing package
+% \lstset{	
+%     basicstyle = \scriptsize\ttfamily,
+%     keywordstyle = \color{blue}\ttfamily,
+%     stringstyle = \color{red}\ttfamily,
+%    	commentstyle = \color{gray}\ttfamily,
+%    	tabsize = 3,
+%    	breaklines = true,
+%    	stepnumber = 1,
+%    	showtabs = false,
+%    	showstringspaces = false,
+%    	frame = none
+% }
+
+% Commands for true/false questions
+% ----------------------------------------------------------------
+\newcommand{\question}[1]{%
+	\noindent
+	\begin{minipage}[t]{0.15\linewidth}
+	\centering		
+		\textbf{[\hspace{1 cm}]}
+	\end{minipage}%
+	\begin{minipage}[t]{0.85\linewidth}
+		#1
+	\end{minipage}
+	\smallskip
+}
+% ----------------------------------------------------------------
+
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\begin{center}
+	{\Large \textbf{Solución de Problemas con Programación (TC-1017)}}
+	
+	\bigskip
+	{\large \textbf{Actividad 04 -- Estructuras de Datos I}}
+\end{center}
+
+\bigskip
+{\large \textbf{Nombre}: \rule{13.7 cm}{0.4mm}}
+
+% \bigskip
+% {\large \textbf{Matrícula}: \rule{5 cm}{0.4mm}}
+
+% \bigskip
+% {\large \textbf{Name}: \rule{14 cm}{0.4mm}}
+
+\bigskip
+{\large \textbf{Matrícula}: \rule{5 cm}{0.4mm}} \hfill {\large \textbf{Fecha}: \today}
+
+\bigskip
+
+% {\footnotesize Nota: es probable que esta actividad nos asuste un poco al principio. Es perfectamente normal.
+% En efecto, es de mayor dificultad a las que hemos visto anteriormente y probablemente haya dudas.
+% Si hay algo que no entiendas, no te quedes sin preguntar.}
+
+\section{Arreglos}
+
+Resuelve las operaciones y contesta correctamente. Puedes usar MATLAB/Octave para ayudarte.
+
+\begin{enumerate}
+    \itemsep2.5ex
+    \item Sea $x = \langle 1, 3, 5, 7, 9, 11, 13 \rangle$
+        \bigskip
+    \begin{enumerate}
+        \item $f(x_1) =$ \quad \; \shortresponserule
+        \item $f(x_2) =$ \quad \; \shortresponserule
+        \item $f(x_3) =$ \quad \; \shortresponserule
+        \item $f(x_4) =$ \quad \; \shortresponserule
+        \item $f(x_5) =$ \quad \; \shortresponserule
+        \item $f(x_6) =$ \quad \; \shortresponserule
+        \item $f(x_7) =$ \quad \; \shortresponserule
+    \end{enumerate}
+    \item $x_2^2 =$ \hfill \shortresponserule
+    \item $x_7^4 =$ \hfill \shortresponserule
+    \item $x_i+2 =$  \hfill \shortresponserule
+    \item $x_i^2 =$  \hfill \shortresponserule
+\end{enumerate}
+
+\section{Matrices}
+
+Antes de comenzar con matrices, hay que hacernos algunas preguntas:
+
+\begin{itemize}
+    \item ¿Qué es una variable? \hfill \shortresponserule
+    \item ¿Qué es un arreglo? \hfill \shortresponserule
+	\item ¿Qué es una matriz? \hfill \shortresponserule
+\end{itemize}
+
+Considera ahora la siguiente matriz:
+
+$$A = \begin{bmatrix}
+    1 & 2 & 3 & 4\\
+    5 & 6 & 7 & 8\\
+    9 & 10 & 11 & 12\\
+    13 & 14 & 15& 16
+\end{bmatrix}$$
+
+\begin{itemize}
+    \item ¿Cuántas \textbf{filas} tiene $A$? \hfill \shortresponserule
+    \item ¿Cuántas \textbf{columnas} tiene $A$? \hfill \shortresponserule
+    \item ¿Cuál es el elemento de la fila 1 y de la columna 3? \hfill \shortresponserule
+    \item ¿Cuál es el elemento $A_{4,2}$? \hfill \shortresponserule
+\end{itemize}
+
+\begin{itemize}
+    \item $A_{1} =$ \hfill \shortresponserule
+    \item $A_{3,1} =$ \hfill \shortresponserule
+    \item $A_{i,j} + 10 =$ \hfill \shortresponserule
+    \item $A^T =$ \hfill \shortresponserule
+\end{itemize}
+
+\section{Comandos}
+
+Escribe los símbolos y comandos de MATLAB/Octave que consideres útiles para recordar lo visto en la sesión, y una descripción breve de cada uno de ellos:
+
+\vfill
+
+\textbf{Apegándome al Código de Ética de los Estudiantes del Tecnológico de Monterrey, me comprometo a que mi actuación en esta actividad esté regida por la honestidad académica.}
+
+\end{document}
