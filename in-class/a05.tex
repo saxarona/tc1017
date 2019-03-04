@@ -1,0 +1,162 @@
+\documentclass[spanish, 10pt]{article}
+
+\usepackage[table, xcdraw]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, mexico]{babel}
+\usepackage{helvet}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{ulem}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[margin = 3 cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\usepackage{matlab-prettifier}
+\usepackage{multicol}
+
+\usetikzlibrary{arrows, shapes, trees, calc, decorations.pathreplacing, shapes.misc, positioning, automata}
+
+\setlength\parindent{0pt}
+
+\renewcommand{\familydefault}{\sfdefault}
+\newcommand{\responserule}{{\large\rule{14 cm}{0.3mm}}}
+\newcommand{\shortresponserule}{{\large\rule{5 cm}{0.3mm}}}
+\newcommand{\veryshortresponserule}{{\large\rule{3 cm}{0.3mm}}}
+\newcommand{\matlab}[1]{\lstinline[style=Matlab-pyglike]!#1!}
+
+
+% Specifications for listing package
+% \lstset{	
+%     basicstyle = \scriptsize\ttfamily,
+%     keywordstyle = \color{blue}\ttfamily,
+%     stringstyle = \color{red}\ttfamily,
+%    	commentstyle = \color{gray}\ttfamily,
+%    	tabsize = 3,
+%    	breaklines = true,
+%    	stepnumber = 1,
+%    	showtabs = false,
+%    	showstringspaces = false,
+%    	frame = none
+% }
+
+% Commands for true/false questions
+% ----------------------------------------------------------------
+\newcommand{\question}[1]{%
+	\noindent
+	\begin{minipage}[t]{0.15\linewidth}
+	\centering		
+		\textbf{[\hspace{1 cm}]}
+	\end{minipage}%
+	\begin{minipage}[t]{0.85\linewidth}
+		#1
+	\end{minipage}
+	\smallskip
+}
+% ----------------------------------------------------------------
+
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\begin{center}
+	{\Large \textbf{Solución de Problemas con Programación (TC-1017)}}
+	
+	\bigskip
+	{\large \textbf{Actividad 05 -- Estructuras de Datos II}}
+\end{center}
+
+\bigskip
+{\large \textbf{Nombre}: \rule{13.7 cm}{0.4mm}}
+
+% \bigskip
+% {\large \textbf{Matrícula}: \rule{5 cm}{0.4mm}}
+
+% \bigskip
+% {\large \textbf{Name}: \rule{14 cm}{0.4mm}}
+
+\bigskip
+{\large \textbf{Matrícula}: \rule{5 cm}{0.4mm}} \hfill {\large \textbf{Fecha}: \today}
+
+\bigskip
+
+% {\footnotesize Nota: es probable que esta actividad nos asuste un poco al principio. Es perfectamente normal.
+% En efecto, es de mayor dificultad a las que hemos visto anteriormente y probablemente haya dudas.
+% Si hay algo que no entiendas, no te quedes sin preguntar.}
+
+\section{Vectores y Matrices}
+
+Resuelve las operaciones y contesta correctamente. Puedes usar MATLAB/Octave para ayudarte.
+
+\begin{enumerate}
+    \itemsep2.5ex
+    \item Sean $\mathbf{x} =\begin{bmatrix}
+        1 & 3 & 5 & 7
+    \end{bmatrix}$ \quad y \quad
+    $\mathbf{y} = \begin{bmatrix}
+        2 \\
+        4 \\
+        6 \\
+        8
+    \end{bmatrix}$
+
+        \bigskip
+
+    \begin{enumerate}
+        \item $\mathbf{x} + 2 =$
+        \item $\mathbf{y} + 3 =$
+        \item $\mathbf{x} \cdot 4 =$
+        \item $\mathbf{y}  \cdot 5 =$
+        \item $\mathbf{x} + \mathbf{y} =$
+        \item $\mathbf{x} \cdot \mathbf{y} =$
+        \item $\mathbf{x} \otimes \mathbf{y} =$
+        \item $\mathbf{y} \otimes \mathbf{x} =$
+    \end{enumerate}
+
+    \item Sean $ A = \begin{bmatrix}
+        1 & 2\\
+        3 & 4
+    \end{bmatrix}$ \quad y
+    $B = \begin{bmatrix}
+        3 & 3 & 1\\
+        2 & 3 & 5
+    \end{bmatrix}$
+    
+    \bigskip
+
+    \begin{enumerate}
+        \item $A + 2 =$
+        \item $A \times 5 =$
+        \item $A \times B =$
+        \item $B^T = $
+        \item $B^T \times A = $
+    \end{enumerate}
+\end{enumerate}
+
+\pagebreak
+
+\section{Comandos: operadores y matrices constantes}
+
+Prueba los siguientes comandos en MATLAB/Octave y escribe una breve descripción de los mismos:
+
+\begin{enumerate}[label=\alph*)]
+	\large
+	\item \matlab{*} \\[3ex] \responserule
+	\item \matlab{.*} \\[3ex] \responserule
+	\item \matlab{zeros(m,n)} \\[3ex] \responserule
+	\item \matlab{ones(m,n)} \\[3ex] \responserule
+	\item \matlab{eye(n)} \\[3ex] \responserule
+	\item \matlab{rand(m,n)} \\[3ex] \responserule
+	\item \matlab{randi(k,m,n)} \\[3ex] \responserule
+	\item \matlab{triu(A)} \\[3ex] \responserule
+	\item \matlab{tril(A)} \\[3ex] \responserule
+\end{enumerate}
+
+\vfill
+
+\textbf{Apegándome al Código de Ética de los Estudiantes del Tecnológico de Monterrey, me comprometo a que mi actuación en esta actividad esté regida por la honestidad académica.}
+
+\end{document}
