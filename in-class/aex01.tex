@@ -1,0 +1,133 @@
+\documentclass[spanish, 10pt]{article}
+
+\usepackage[table, xcdraw]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, mexico]{babel}
+\usepackage{helvet}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{ulem}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[margin = 3 cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\usepackage{matlab-prettifier}
+\usepackage{multicol}
+
+\usetikzlibrary{arrows, shapes, trees, calc, decorations.pathreplacing, shapes.misc, positioning, automata}
+
+\setlength\parindent{0pt}
+
+\renewcommand{\familydefault}{\sfdefault}
+\newcommand{\responserule}{{\large\rule{14 cm}{0.3mm}}}
+\newcommand{\shortresponserule}{{\large\rule{5 cm}{0.3mm}}}
+\newcommand{\veryshortresponserule}{{\large\rule{3 cm}{0.3mm}}}
+\newcommand{\matlab}[1]{\lstinline[style=Matlab-pyglike]!#1!}
+
+
+% Specifications for listing package
+% \lstset{	
+%     basicstyle = \scriptsize\ttfamily,
+%     keywordstyle = \color{blue}\ttfamily,
+%     stringstyle = \color{red}\ttfamily,
+%    	commentstyle = \color{gray}\ttfamily,
+%    	tabsize = 3,
+%    	breaklines = true,
+%    	stepnumber = 1,
+%    	showtabs = false,
+%    	showstringspaces = false,
+%    	frame = none
+% }
+
+% Commands for true/false questions
+% ----------------------------------------------------------------
+\newcommand{\question}[1]{%
+	\noindent
+	\begin{minipage}[t]{0.15\linewidth}
+	\centering		
+		\textbf{[\hspace{1 cm}]}
+	\end{minipage}%
+	\begin{minipage}[t]{0.85\linewidth}
+		#1
+	\end{minipage}
+	\smallskip
+}
+% ----------------------------------------------------------------
+
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\begin{center}
+	{\Large \textbf{Solución de Problemas con Programación (TC-1017)}}
+	
+	\bigskip
+	{\large \textbf{Actividad EX 01 -- Problemas Reales I}}
+\end{center}
+
+\bigskip
+{\large \textbf{Nombre}: \rule{13.7 cm}{0.4mm}}
+
+% \bigskip
+% {\large \textbf{Matrícula}: \rule{5 cm}{0.4mm}}
+
+% \bigskip
+% {\large \textbf{Name}: \rule{14 cm}{0.4mm}}
+
+\bigskip
+{\large \textbf{Matrícula}: \rule{5 cm}{0.4mm}} \hfill {\large \textbf{Fecha}: \today}
+
+\bigskip
+
+{\footnotesize Nota: es probable que esta actividad nos asuste un poco al principio. Es perfectamente normal.
+En efecto, es de mayor dificultad a las que hemos visto anteriormente y probablemente haya dudas.
+Si hay algo que no entiendas, no te quedes sin preguntar.}
+
+\section{Definición del problema}
+
+Considera el modelo $SIR$ siguiente y escribe las definiciones siguientes.
+
+\begin{itemize}
+    \item ¿Qué significa la $S$ en $SIR$?
+    \item ¿Qué significa la $I$ en $SIR$?
+    \item ¿Qué significa la $R$ en $SIR$?
+    \item ¿Qué simboliza $\Delta t$?
+    \item ¿Qué significa \textit{discretizar}?
+\end{itemize}
+
+
+\section{Ecuaciones}
+
+Escribe las ecuaciones para definir el cambio en los bloques $S, I, R$ a continuación:
+
+\vspace{2in}
+
+\begin{itemize}
+    \item ¿Qué significa la $\beta$?
+    \item ¿Qué significa la $\mu$?
+    \item ¿Qué significa la $\gamma$?
+\end{itemize}
+
+\pagebreak
+
+Escribe las ecuaciones diferenciales del sistema anterior:
+
+\vspace{2in}
+
+Escribe la versión discretizada del sistema de ecuaciones diferenciales anterior:
+
+\vspace{2in}
+
+\section{Comandos útiles de la sesión}
+
+Escribe los símbolos y comandos de MATLAB/Octave que consideres útiles para recordar lo visto en la sesión, y una descripción breve de cada uno de ellos:
+
+\vfill
+
+\textbf{Apegándome al Código de Ética de los Estudiantes del Tecnológico de Monterrey, me comprometo a que mi actuación en esta actividad esté regida por la honestidad académica.}
+
+\end{document}
