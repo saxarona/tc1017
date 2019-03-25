@@ -1,0 +1,275 @@
+\documentclass[11pt, onside]{article}
+%\usepackage[a4paper]{geometry}
+\usepackage{fullpage}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, mexico]{babel}
+\usepackage{lipsum}
+\usepackage{bm}
+\usepackage{upgreek}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage{csquotes}
+\usepackage{listings}
+\usepackage{booktabs}
+%\usepackage{helvet}
+\usepackage[numbered]{matlab-prettifier}
+
+
+% mathtools for: Aboxed (put box on last equation in align envirenment)
+\usepackage{microtype} %improves the spacing between words and letters
+
+%% COLOR DEFINITIONS
+
+\usepackage{xcolor} % Enabling mixing colors and color's call by 'svgnames'
+
+\definecolor{MyColor1}{rgb}{0.2,0.4,0.6} %mix personal color
+\newcommand{\textb}{\color{Black} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\blue}{\color{MyColor1} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\blueb}{\color{MyColor1} \usefont{OT1}{lmss}{b}{n}}
+\newcommand{\red}{\color{LightCoral} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\green}{\color{Turquoise} \usefont{OT1}{lmss}{m}{n}}
+
+\DeclareMathOperator{\trace}{trace}
+\DeclareMathOperator{\diag}{diag}
+
+%% FONTS AND COLORS
+
+%    SECTIONS
+
+\usepackage{titlesec}
+\usepackage{sectsty}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%set section/subsections HEADINGS font and color
+%\sectionfont{\color{Black}}  % sets colour of sections
+%\subsectionfont{\color{Black}}  % sets colour of sections
+
+%set section enumerator to arabic number (see footnotes markings alternatives)
+\renewcommand\thesection{\arabic{section}} %define sections numbering
+\renewcommand\thesubsection{\thesection\arabic{subsection}} %subsec.num.
+
+%define new section style
+\newcommand{\mysection}{
+\titleformat{\section} [runin] {\usefont{OT1}{lmss}{b}{n}\color{MyColor1}} 
+{\thesection} {3pt} {} } 
+
+
+% %	CAPTIONS
+% \usepackage{caption}
+% \usepackage{subcaption}
+% %%%%%%%%%%%%%%%%%%%%%%%%
+% \captionsetup[figure]{labelfont={color=Turquoise}}
+
+
+%		!!!EQUATION (ARRAY) --> USING ALIGN INSTEAD
+%using amsmath package to redefine eq. numeration (1.1, 1.2, ...) 
+\renewcommand{\theequation}{\thesection\arabic{equation}}
+
+\setlength\parindent{0pt}
+
+
+
+
+\makeatletter
+\let\reftagform@=\tagform@
+\def\tagform@#1{\maketag@@@{(\ignorespaces\textcolor{red}{#1}\unskip\@@italiccorr)}}
+\renewcommand{\eqref}[1]{\textup{\reftagform@{\ref{#1}}}}
+\makeatother
+% \usepackage{hyperref}
+% \hypersetup{colorlinks=true}
+
+% For labeling top of page on every page but first one:
+%\usepackage{fancyhdr}
+
+\newcommand{\myclass}{TC1017 -- Solución de Problemas con Programación} % Class name?
+\newcommand{\mytitle}{Examen 2} % Title of document?
+\newcommand{\mydate}{25.03.19} % The date?
+\newcommand{\myheader}{
+    \begin{flushleft}
+        \large
+        Nombre: \rule{13 cm}{0.4mm} \\
+        Matrícula: \rule{5 cm}{0.4mm} \hfill Fecha: \mydate
+    \end{flushleft}
+}
+
+\newcommand{\matlab}[1]{\lstinline[style=Matlab-editor]!#1!}
+\newcommand{\shortresponserule}{{\large\rule{5 cm}{0.3mm}}}
+
+\title{
+    \myclass \\
+    \textbf{\mytitle} \\
+    \myheader
+    \date{}
+}
+
+% You can set the date automatically by replacing "date goes here" with "\today"
+
+% \renewcommand{\rmdefault}{phv} % Arial Font
+\renewcommand{\familydefault}{\sfdefault}
+
+% \pagestyle{fancy}
+% \fancyhead{}
+% \fancyhead[CO,CE]{{\small{{\bf{\mytitle}} -- \myclass}}}
+
+\begin{document}
+\maketitle
+
+\vspace{-1.5cm}
+
+Lee cuidadosamente y contesta lo que se te pide.
+Este examen es individual.
+
+Al momento de contestar, intenta ser lo más explícito posible: se calificará con base en lo que esté escrito. %y se considerará el proceso aún cuando la respuesta final esté errada.
+Recuerda que puedes revisar material de la clase, el libro de texto o tus notas.
+Administra bien tu tiempo.
+Buena suerte.
+
+\vspace{1.5ex}
+
+El tipo de tu examen dependerá de tu matrícula.
+
+$$ student = 
+\begin{cases}
+   Minara \, Anemina & = [1, 1, 1, 0.2, 0.5] \text{ si el último dígito de tu matrícula } \mathtt{mod} \, 3 = 0 \\
+   Igna \, Phoenix & = [0.2, 2, 0.5, 1, 1] \text{ si el último dígito de tu matrícula } \mathtt{mod} \, 3 = 1 \\
+   Ultima \, Thule & = [2, 0.2, 0.5, 2, 1] \text{ si el último dígito de tu matrícula } \mathtt{mod} \, 3 = 2 \\
+\end{cases}
+$$
+
+\vspace{1.5ex}
+
+Mi matrícula es \shortresponserule,
+así que el último dígito de mi ID $\mathtt{mod}$ 3 es \rule{1cm}{0.4mm}.
+
+Por tanto me toca usar a \shortresponserule \quad (2 \%)
+
+\vspace{1.5ex}
+
+\section{Hechizos de primer año (60\%)}
+
+Analiza cada uno de los siguientes códigos que sirven para calcular el costo de los hechizos que los estudiantes deben aprender el primer año de su estancia en el instituto.
+
+\subsection{Fireball}
+
+\lstinputlisting[style=Matlab-editor]{fireball.m}
+
+\begin{itemize}
+    \item \matlab{fireball(student(1))} \hfill \shortresponserule
+\end{itemize}
+
+\subsection{Freezing Pulse}
+
+\lstinputlisting[style=Matlab-editor]{freezing_pulse.m}
+
+\begin{itemize}
+    \item \matlab{freezing_pulse(student(2))} \hfill \shortresponserule
+\end{itemize}
+
+\subsection{Arc}
+
+\lstinputlisting[style=Matlab-editor]{arc.m}
+\begin{itemize}
+    \item \matlab{arc(student(3))} \hfill \shortresponserule
+\end{itemize}
+
+\subsection{Essence Drain}
+
+\lstinputlisting[style=Matlab-editor]{essence_drain.m}
+\begin{itemize}
+    \item \matlab{essence_drain(student(4))} \hfill \shortresponserule
+\end{itemize}
+
+\subsection{Summon Skeleton}
+
+\lstinputlisting[style=Matlab-editor]{skeleton.m}
+\begin{itemize}
+    \item \matlab{skeleton(student(5))} \hfill \shortresponserule
+\end{itemize}
+
+\pagebreak
+
+\section{Hechizos de segundo año (30 \%)}
+
+Los códigos anteriores generan los costos de cada uno de los hechizos que $student$ debe aprender en el tronco común de su estancia en la escuela de magia.
+Sin embargo, a partir del segundo año pueden escoger \textbf{uno de los siguientes dos cursos, o ambos}:
+
+\subsection{Raise Zombie}
+
+Reanimar a un zombie es muy complicado pues se utilizan restos de aquí y de allá,
+y se necesita carne fresca.
+Para tener todo el proceso dentro del marco de la legalidad, la escuela tiene un convenio con la morgue municipal, quienes proveen semanalmente una tabla como la siguiente, y cuyos números cambian semana a semana:
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{@{}cccc@{}}
+    \toprule
+    \textbf{ID} & \textbf{Peso} & \textbf{Altura} & \textbf{Cause de la Muerte} \\ \midrule
+    1 & 78 & 1.72 & Natural \\
+    2 & 97 & 1.86 & Asfixia \\
+     &  & $\vdots$ &  \\ \bottomrule
+    \end{tabular}
+\end{table}
+
+Para saber si un cuerpo puede ser usado para la reanimación, se busca que su potencial (calculado como $Peso \times Altura$) sea 115 o más.
+
+\bigskip
+
+Escribe \textbf{dos funciones}:
+\begin{enumerate}
+    \item Una función que reciba la matriz y devuelva como resultado el número de cuerpos disponibles para reanimación para esa semana (15 \%)
+    \item Una función que reciba la matriz y devuelva el potencial total de la semana (15 \%)
+\end{enumerate}
+
+\subsection{Magma Orb}
+
+Para practicar su puntería, los estudiantes necesitan blancos y dianas que irremediablemente serán consumidos por las flamas de sus hechizos.
+Por eso, la escuela tiene un convenio con el centro municipal de materiales y reciclaje, quienes proveen semanalmente una tabla con la siguiente forma y cuyos números cambian semana a semana:
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{@{}cccc@{}}
+    \toprule
+    \textbf{ID} & \textbf{Unidades} & \textbf{Material} & \textbf{Comprimible} \\ \midrule
+    1 & 2100 & Cartón & Sí \\
+    2 & 3500 & Cera & No \\
+    3 & 2700 & Aceite & No \\
+    4 & 7000 & Papel & Sí \\ \bottomrule
+    \end{tabular}
+\end{table}
+
+Para fabricar blancos y dianas, a la semana se utiliza el 65\% del cartón, 10\% del papel, 10\% del aceite y 15\% de la cera (el resto se utiliza para velas) que entra al instituto.
+
+Además, se sabe que para hacer una diana es necesario una unidad de cada material.
+
+Contesta la siguiente pregunta retórica, y finalmente calcula...
+\textit{¿Qué limita el número de dianas que puedo hacer esta semana?}
+
+¿Cuántas dianas pueden hacerse esta semana? (10 \%) \shortresponserule
+
+\bigskip
+
+Escribe \textbf{una función} que reciba una matriz como la de arriba, y que devuelva el número de dianas que pueden fabricarse en la semana (20 \%)
+\textit{Hint: si no quieres hacer comparaciones, podrías usar} \matlab{min}
+
+\section{Feedback (8 \%)}
+
+\begin{enumerate}[label=\alph*)]
+    \item Dibuja al estudiante que te tocó (1 \%)
+    \item Ponle nombre a su instituto (1 \%)
+    \item Escribe una opinión breve sobre el modelo de examen (3 \%)
+    \item Si se pueden atacar situaciones fantásticas con programación, ¿crees que sirva para situaciones reales? ¿Por qué? (3 \%)
+\end{enumerate}
+
+\section{Reto (+8 $\bigstar$)}
+
+Escribe el Diagrama de flujo de cualquiera de los hechizos de primer año:
+
+\vfill
+
+\textbf{De acuerdo con el Código de Ética del Tecnológico de Monterrey, mi desempeño en esta actividad estará guiado por la integridad académica.}
+\end{document}
