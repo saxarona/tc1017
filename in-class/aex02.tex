@@ -1,0 +1,112 @@
+\documentclass[spanish, 10pt]{article}
+
+\usepackage[table, xcdraw]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, mexico]{babel}
+\usepackage{helvet}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{ulem}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[margin = 3 cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\usepackage{matlab-prettifier}
+\usepackage{multicol}
+
+\usetikzlibrary{arrows, shapes, trees, calc, decorations.pathreplacing, shapes.misc, positioning, automata}
+
+\setlength\parindent{0pt}
+
+\renewcommand{\familydefault}{\sfdefault}
+\newcommand{\responserule}{{\large\rule{14 cm}{0.3mm}}}
+\newcommand{\shortresponserule}{{\large\rule{5 cm}{0.3mm}}}
+\newcommand{\veryshortresponserule}{{\large\rule{3 cm}{0.3mm}}}
+\newcommand{\matlab}[1]{\lstinline[style=Matlab-pyglike]!#1!}
+
+
+% Specifications for listing package
+% \lstset{	
+%     basicstyle = \scriptsize\ttfamily,
+%     keywordstyle = \color{blue}\ttfamily,
+%     stringstyle = \color{red}\ttfamily,
+%    	commentstyle = \color{gray}\ttfamily,
+%    	tabsize = 3,
+%    	breaklines = true,
+%    	stepnumber = 1,
+%    	showtabs = false,
+%    	showstringspaces = false,
+%    	frame = none
+% }
+
+% Commands for true/false questions
+% ----------------------------------------------------------------
+\newcommand{\question}[1]{%
+	\noindent
+	\begin{minipage}[t]{0.15\linewidth}
+	\centering		
+		\textbf{[\hspace{1 cm}]}
+	\end{minipage}%
+	\begin{minipage}[t]{0.85\linewidth}
+		#1
+	\end{minipage}
+	\smallskip
+}
+% ----------------------------------------------------------------
+
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\begin{center}
+	{\Large \textbf{Solución de Problemas con Programación (TC-1017)}}
+	
+	\bigskip
+	{\large \textbf{Actividad EX 02 -- Problemas Reales II (Tablas +2)}}
+\end{center}
+
+\bigskip
+{\large \textbf{Nombre}: \rule{13.7 cm}{0.4mm}}
+
+% \bigskip
+% {\large \textbf{Matrícula}: \rule{5 cm}{0.4mm}}
+
+% \bigskip
+% {\large \textbf{Name}: \rule{14 cm}{0.4mm}}
+
+\bigskip
+{\large \textbf{Matrícula}: \rule{5 cm}{0.4mm}} \hfill {\large \textbf{Fecha}: \today}
+
+\bigskip
+
+{\footnotesize Nota: esta actividad es de mayor dificultad a las que hemos visto anteriormente y probablemente haya dudas.
+Si hay algo que no entiendas, no te quedes sin preguntar.}
+
+\section{Repaso}
+
+Constesta estas breves preguntas de repaso.
+
+\begin{itemize}
+    \item ¿Qué es un vector? \\[3ex] \responserule
+    \item ¿Qué es una matriz? \\[3ex] \responserule
+    \item ¿Qué es un arreglo? \\[3ex] \responserule
+    \item ¿Cómo represento en MATLAB un vector? \\[3ex] \responserule
+    \item ¿Cómo represento en MATLAB una matriz? \\[3ex] \responserule
+    \item ¿Cómo represento en MATLAB un arreglo? \\[3ex] \responserule
+\end{itemize}
+
+\pagebreak
+
+\section{Comandos útiles de la sesión}
+
+Escribe una descripción breve de cada uno de los símbolos y comandos de MATLAB/Octave que consideres útiles para recordar lo visto en la sesión. La lista debería incluir \matlab{readtable, find, strfind, count, array2table}.
+
+\vfill
+
+\textbf{Apegándome al Código de Ética de los Estudiantes del Tecnológico de Monterrey, me comprometo a que mi actuación en esta actividad esté regida por la honestidad académica.}
+
+\end{document}
