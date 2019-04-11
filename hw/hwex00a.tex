@@ -1,0 +1,140 @@
+\documentclass[]{book}
+
+%These tell TeX which packages to use.
+\usepackage{array,epsfig}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsxtra}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{color}
+\usepackage[spanish, mexico]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{helvet}
+\usepackage[framed]{matlab-prettifier}
+\newcommand{\matlab}[1]{\lstinline[style=Matlab-pyglike]!#1!}
+
+%Here I define some theorem styles and shortcut commands for symbols I use often
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\newtheorem*{rmk}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem*{joke}{Joke}
+\newtheorem{ex}{Example}
+\newtheorem*{sol}{Solution}
+\newtheorem{prop}{Proposition}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\graph}{\mathrm{graph}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\Z}{\bb{Z}}
+\newcommand{\Q}{\bb{Q}}
+\newcommand{\R}{\bb{R}}
+\newcommand{\C}{\bb{C}}
+\newcommand{\N}{\bb{N}}
+\newcommand{\M}{\mathbf{M}}
+\newcommand{\m}{\mathbf{m}}
+\newcommand{\MM}{\mathscr{M}}
+\newcommand{\HH}{\mathscr{H}}
+\newcommand{\Om}{\Omega}
+\newcommand{\Ho}{\in\HH(\Om)}
+\newcommand{\bd}{\partial}
+\newcommand{\del}{\partial}
+\newcommand{\bardel}{\overline\partial}
+\newcommand{\textdf}[1]{\textbf{\textsf{#1}}\index{#1}}
+\newcommand{\img}{\mathrm{img}}
+\newcommand{\ip}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\inter}[1]{\mathrm{int}{#1}}
+\newcommand{\exter}[1]{\mathrm{ext}{#1}}
+\newcommand{\cl}[1]{\mathrm{cl}{#1}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\vol}{\mathrm{vol}}
+\newcommand{\cnt}{\mathrm{ct}}
+\newcommand{\osc}{\mathrm{osc}}
+\newcommand{\LL}{\mathbf{L}}
+\newcommand{\UU}{\mathbf{U}}
+\newcommand{\support}{\mathrm{support}}
+\newcommand{\AND}{\;\wedge\;}
+\newcommand{\OR}{\;\vee\;}
+\newcommand{\Oset}{\varnothing}
+\newcommand{\st}{\ni}
+\newcommand{\wh}{\widehat}
+
+%Pagination stuff.
+\setlength{\topmargin}{-.3 in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{9.in}
+\setlength{\textwidth}{6.5in}
+\setlength{\itemsep}{0.45in}
+\pagestyle{empty}
+
+
+
+\begin{document}
+
+\begin{center}
+{\huge Solución de Problemas con Programación (TC1017)}\\[1.5ex]
+{\large \textbf{Tarea 00b}\\[1.5ex] %You should put your name here
+22.04.19} %You should write the date here.
+\end{center}
+
+\vspace{0.2 cm}
+
+\subsection*{Estadísticas básicas}
+
+\bigskip
+
+Genera un \textbf{script} de MATLAB para, junto con tu archivo de datos, puedas encontrar la respuesta a las siguientes preguntas (80 \%).
+Posteriormente, contéstalas como \textbf{comentarios}. Considera que para contestar \textbf{cada pregunta} es necesario \textbf{hacer un cálculo}.
+Incluye las respuestas como comentarios antes o después de la \textbf{sección correspondiente en tu script} (20 \%)
+
+No olvides que la mayor parte de las instrucciones necesarias están en tu \textbf{Actividad EX02}.
+
+\bigskip
+
+\begin{itemize}
+    \item \textsc{Música}:
+    \begin{enumerate}[label=\alph*)]
+        \item ¿Cuántas canciones registraste? (10\%)
+        \item ¿Cuántas canciones oíste el \textbf{último día} de tu registro? (10\%)
+        \item De todas las registradas, ¿qué porcentaje de canciones te saltaste? (20\%)
+        \item ¿Cuál fue el artista que más escuchaste? (20\%)
+        \item ¿Cuál fue la canción que más escuchaste? (20\%)
+    \end{enumerate}
+    \item \textsc{Netflix}: 
+    \begin{enumerate}[label=\alph*)]
+        \item ¿Cuántas películas o episodios registraste? Cuenta ambos: tres películas y dos episodios son 5 en total (10\%)
+        \item ¿Cuántas películas viste el \textbf{último día} de tu registro? (15\%)
+        \item ¿Cuántos episodios viste el \textbf{primer día} de tu registro? (15\%)
+        \item De todos tus datos, ¿qué porcentaje te saltaste el intro o los créditos (cualquiera de los dos)? (20\%)
+        \item ¿Cuál es el título de la serie que más viste? (20\%)
+    \end{enumerate}
+    \item \textsc{Juegos}:
+    \begin{enumerate}[label=\alph*)]
+        \item ¿Cuántos juegos o partidas registraste? (10\%)
+        \item ¿Cuántas partidas tuviste el \textbf{último día} de tu registro? (15\%)
+        \item ¿Cuántas partidas tuviste el \textbf{primer día} de tu registro? (15\%)
+        \item ¿Cuál es el nombre del juego que más jugaste? (20\%)
+        \item De todas tus partidas, ¿qué porcentaje ganaste o empataste? (20\%)
+    \end{enumerate}
+\end{itemize}
+
+Deberás entregar una carpeta comprimida en \textbf{ZIP} con tu script (\texttt{tumatricula.m}) y tu archivo de datos (tumatricula.csv).
+
+\section*{Recomendaciones}
+\begin{itemize}
+    \item Si lo crees necesario, haz un diagrama de flujo que te ayude a guiarte en el proceso.
+    \item Asegúrate de estar corriendo el MATLAB en el mismo lugar donde guardaste tus archivos. Esto es sumamente importante.
+    \item Asegúrate de que tu archivo tiene nombre en minúsculas, sin espacios ni acentos o símbolos. 
+    \item No te olvides de incluir tu nombre y número de matrícula en los archivos fuente.
+\end{itemize}
+\end{document}
