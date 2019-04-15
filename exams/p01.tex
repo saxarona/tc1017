@@ -1,0 +1,165 @@
+\documentclass[]{article}
+
+%These tell TeX which packages to use.
+\usepackage{array,epsfig}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsxtra}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{color}
+\usepackage[spanish, mexico]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{helvet}
+\usepackage[framed]{matlab-prettifier}
+\newcommand{\matlab}[1]{\lstinline[style=Matlab-pyglike]!#1!}
+
+%Here I define some theorem styles and shortcut commands for symbols I use often
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\newtheorem*{rmk}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem*{joke}{Joke}
+\newtheorem{ex}{Example}
+\newtheorem*{sol}{Solution}
+\newtheorem{prop}{Proposition}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\graph}{\mathrm{graph}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\Z}{\bb{Z}}
+\newcommand{\Q}{\bb{Q}}
+\newcommand{\R}{\bb{R}}
+\newcommand{\C}{\bb{C}}
+\newcommand{\N}{\bb{N}}
+\newcommand{\M}{\mathbf{M}}
+\newcommand{\m}{\mathbf{m}}
+\newcommand{\MM}{\mathscr{M}}
+\newcommand{\HH}{\mathscr{H}}
+\newcommand{\Om}{\Omega}
+\newcommand{\Ho}{\in\HH(\Om)}
+\newcommand{\bd}{\partial}
+\newcommand{\del}{\partial}
+\newcommand{\bardel}{\overline\partial}
+\newcommand{\textdf}[1]{\textbf{\textsf{#1}}\index{#1}}
+\newcommand{\img}{\mathrm{img}}
+\newcommand{\ip}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\inter}[1]{\mathrm{int}{#1}}
+\newcommand{\exter}[1]{\mathrm{ext}{#1}}
+\newcommand{\cl}[1]{\mathrm{cl}{#1}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\vol}{\mathrm{vol}}
+\newcommand{\cnt}{\mathrm{ct}}
+\newcommand{\osc}{\mathrm{osc}}
+\newcommand{\LL}{\mathbf{L}}
+\newcommand{\UU}{\mathbf{U}}
+\newcommand{\support}{\mathrm{support}}
+\newcommand{\AND}{\;\wedge\;}
+\newcommand{\OR}{\;\vee\;}
+\newcommand{\Oset}{\varnothing}
+\newcommand{\st}{\ni}
+\newcommand{\wh}{\widehat}
+\newcommand{\markthis}[1]{{\color{blue}\textbf{#1}}}
+
+%Pagination stuff.
+\setlength{\topmargin}{-.3 in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{9.in}
+\setlength{\textwidth}{6.5in}
+\setlength{\itemsep}{0.45in}
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+
+
+\begin{document}
+
+\begin{center}
+{\huge Solución de Problemas con Programación (TC1017)}\\[1.5ex]
+{\large \textbf{Proyecto: Análisis del cambio climático}\\[1.5ex] %You should put your name here
+13.05.19} %You should write the date here.
+\end{center}
+
+\vspace{0.2 cm}
+
+{%
+\small
+Este proyecto es \textbf{en parejas}, y consiste en dos partes que valen 15 \% del final cada una.
+El máximo de puntos a obtener en cada una de las partes es de 90 y 100 puntos respectivamente, por un total de 200.
+El 10\% del total es por la inclusión de bibliografía correctamente citada (en formato IEEE, ACM, APA o MLA), y se sugiere que sea al menos una fuente para cada una de las oraciones marcadas con \markthis{este color}.
+}
+
+\section{Proyecto A: Mediciones y creación de herramientas de análisis}
+
+\subsection{Mediciones (30 \%)}
+
+El primer paso consiste en obtener las mediciones necesarias para poder generar nuestro análisis.
+\markthis{Investiguen las temperaturas {\large máximas y mínimas} en Monterrey para cada día de los meses de febrero y marzo de 2019, 2018 y 2017}.
+Se recomienda que las guarden en archivos \texttt{csv} distintos para facilitar su manejo.
+
+\bigskip
+
+\markthis{Repitan el mismo proceso para alguna otra ciudad: temperaturas máximas y mínimas de cada día de febrero y marzo de 2019, 2018 y 2017}.
+Se sugiere que la ciudad sea de importancia para ustedes, su ciudad de origen o alguna ciudad en la que les gustaría vivir o trabajar.
+De nuevo, también se sugiere que las guarden en archivos \texttt{csv} separados para facilitar el acceso.
+
+\subsection{Preguntas previas al análisis (10 \%)}
+
+En un archivo de texto (\texttt{txt, rtf}) contesten brevemente las siguientes preguntas \textbf{para cada una de las ciudades}.
+Estas preguntas guiarán la creación de su herramienta de análisis.
+
+\begin{enumerate}
+    \item De todas las mediciones que tomaron para este lugar, ¿Cuál es la temperatura máxima y cuándo fue?
+    \item En este lugar, ¿cuándo fue la temperatura mínima y de cuánto fue?
+    \item En esta ciudad, ¿cuál es la temperatura promedio \textbf{para cada día, por año} de sus mediciones?
+    \item En esta ciudad, en promedio, ¿En qué año fue más alta la temperatura? ¿En qué año fue más baja?
+    \item Si \textbf{para cada año} sumamos la temperatura de todos los días de marzo en nuestros registros en esta ciudad, ¿qué año tiene la mayor suma?
+\end{enumerate}
+
+En el mismo archivo incluyan las respuestas \textbf{para ambas ciudades}.
+
+\subsection{Creación de la herramienta de análisis (50 \%)}
+
+Hagan \textbf{dos scripts} de MATLAB (uno para cada ciudad) para poder contestar las preguntas de la sección anterior.
+Consideren que para contestar cada pregunta, es necesario hacer al menos un cálculo, por lo que debe ser incluido en su script.
+El script debe incluir también la generación de una gráfica para al menos la pregunta 3.
+
+\section{Proyecto B: Análisis y presentación de resultados}
+
+Usando las respuestas de la sección anterior, generen un reporte de resultados (\texttt{PDF}) con sus \textbf{propias palabras}y que contenga lo siguiente:
+
+\bigskip
+
+\begin{itemize}
+    \item \textbf{Portada}: con título del reporte, fecha y datos de los autores (2 \%)
+    \item \textbf{Abstract}: resumen del trabajo de máximo 200 palabras y en la misma hoja que la portada. (10 \%)
+    \item \textbf{Introducción}: de qué trata el trabajo, qué puntos cubre, por qué es importante y qué hay en cada sección del documento (10 \%)
+    \item \textbf{Marco Teórico}: \markthis{muy breve investigación del cambio climático y su efecto en el planeta y la sociedad}. Se recomienda que sea breve pero conciso---no citar más de 2 fuentes, ya que no es el punto principal del trabajo (8 \%)
+    \item \textbf{Metodología}: qué datos consiguieron, dónde, y en qué consistió su análisis (20 \%)
+    \item \textbf{Resultados}: el análisis, sus gráficas (hechas en MATLAB) y una explicación de lo encontrado (20 \%)
+    \item \textbf{Conclusiones}: resumen breve de lo expuesto sin incluir información adicional (10 \%)
+    \item \textbf{Bibliografía}: las fuentes que revisaron en cualquiera formato estándar---IEEE, ACM, APA o MLA (20\%)
+    \item \textbf{Feedback}: breve retroalimentación sobre el trabajo final y el curso; por cada integrante del equipo (10 \%)
+\end{itemize}
+
+\vspace{2 cm}
+
+El entregable final es \textbf{una carpeta comprimida} (\texttt{ZIP}) por equipo, que debe contener:
+
+\begin{enumerate}
+    \item El reporte que generaron (\texttt{.pdf})
+    \item Los dos scripts de MATLAB (\texttt{.m}) con los que trabajaron
+    \item El archivo de respuestas pre-análisis (\texttt{.txt} o \texttt{rtf})
+    \item Los archivos de mediciones de temperatura (\texttt{.csv})
+\end{enumerate}
+
+\end{document}
