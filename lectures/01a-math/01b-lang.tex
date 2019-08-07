@@ -1,14 +1,24 @@
 \documentclass[spanish]{beamer}
 
-\usepackage[utf8]{inputenc}
-%\usepackage[spanish, mexico]{babel}
 \usepackage{hyperref}
-\usepackage{xcolor}
 \usepackage{color}
 \usepackage{ragged2e}
 \usepackage{mathrsfs}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+
 \usepackage{csquotes}
+
 \usepackage[framed]{matlab-prettifier}
+
+\newcommand{\matlab}[1]{\lstinline[style=Matlab-pyglike]!#1!}
+
+\lstset{ %
+    language = Matlab,
+    style = Matlab-editor,
+    basicstyle = \mlttfamily\scriptsize,
+}
 
 % \usepackage{tikz}
 
@@ -85,19 +95,19 @@
 
     \bigskip
 
-    \begin{lstlisting}[style=Matlab-editor]
-    >> 2 + 3
+    \begin{lstlisting}
+        >> 2 + 3
     ans =
             5
     \end{lstlisting} \pause
 
-    \begin{lstlisting}[style=Matlab-editor]
+    \begin{lstlisting}
     >> 2 + 3 * 5 / 8 + 16 / 2.5 * 10^3
     ans =
             6.4039e+03
     \end{lstlisting} \pause
 
-    \begin{lstlisting}[style=Matlab-editor]
+    \begin{lstlisting}
     >> mod(20,7)
     ans =
             6
@@ -105,7 +115,7 @@
 \end{frame}
 
 \begin{frame}[fragile]{Pidiendo ayuda}{Lo básico}
-    Para cualquier duda, uno siempre debe pedir ayuda. Esto se logra con la función \lstinline[style=Matlab-editor]!help!:
+    Para cualquier duda, uno siempre debe pedir ayuda. Esto se logra con la función \matlab{help}:
     \pause
 
     \bigskip
@@ -113,16 +123,15 @@
     \begin{lstlisting}
     >> help mod
     mod    Modulus after division.
-        mod(x,y) returns x - floor(x./y)...
+        mod(x,y) returns x - floor(x./y)
         
-        The statement "x and y are con...
+        The statement "x and y are con
 
         By convention:
             mod(x,0) is x.
             mod(x,x) is 0.
-            mod(x,y), for x~=y...
-
-        See also rem...
+            mod(x,y)
+        See also rem
     \end{lstlisting}
 \end{frame}
 
