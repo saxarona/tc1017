@@ -1,0 +1,168 @@
+\documentclass[spanish]{beamer}
+
+\usepackage[utf8]{inputenc}
+%\usepackage[spanish, mexico]{babel}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{ragged2e}
+\usepackage{mathrsfs}
+\usepackage{csquotes}
+
+% \usepackage{tikz}
+
+% \usetikzlibrary{fit, shapes, arrows}
+
+% \usepackage{courier}
+% \usepackage{subfigure}
+% \usepackage{enumerate}
+% \usepackage{algorithmic}
+% \usepackage{algorithm}
+
+% \usepackage{listings}
+% \usepackage{lstlinebgrd}
+
+\usetheme{Boadilla}
+\usefonttheme[onlymath]{serif}
+
+\newcommand\blfootnote[1]{%
+\begingroup
+\renewcommand\thefootnote{}\footnote{#1}%
+\addtocounter{footnote}{-1}%
+\endgroup
+}
+
+% Sets the templates
+\definecolor{navyblue}{RGB}{0, 0, 128}
+\definecolor{crimson}{RGB}{128, 16, 0}
+
+\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{theorems}[numbered]
+
+\setbeamercolor{title}{fg=navyblue, bg=white}
+\setbeamercolor{frametitle}{fg=navyblue, bg=white}
+\setbeamercolor{structure}{fg=navyblue}
+\setbeamercolor{button}{fg=white,bg=navyblue}
+
+\setbeamercovered{transparent}
+
+\title{Conceptos matemáticos preliminares}
+\subtitle{Solución de Problemas con Programación \\ (TC1017)}
+\author{
+    \texorpdfstring{
+        \begin{center}
+            M.C. Xavier Sánchez Díaz \\
+            \href{mailto:sax@tec.mx}{\texttt{sax@tec.mx}}
+        \end{center}
+    }
+    {M.C. Xavier Sánchez Díaz}
+}
+
+\institute[Tecnológico de Monterrey]{\includegraphics[scale=0.5]{../img/logo}}
+\date{}
+
+\begin{document}
+
+\setlength{\rightskip}{0pt}
+
+\begin{frame}[plain]
+    \titlepage        
+\end{frame}
+
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+\section{¿Qué es una función?}
+
+\begin{frame}{Definición formal}{¿Qué es una función?}
+    \begin{definition}
+        Una \alert{función} \textit{unitaria} de un conjunto $A$ en un conjunto $B$ es cualquier relación binaria $R$ de $A$ a $B$ que satisfaga la condición de que \textit{para todo} $a \in A$ existe \textit{exactamente un} $b \in B$ tal que $(a,b) \in R$.
+    \end{definition} \pause
+    \bigskip
+    Podemos describir una función $f$ de $A$ en $B$ como $f : A \to B$. \pause
+    \bigskip
+    \begin{exampleblock}{Ejemplo}
+        La relación \textit{sucesor} es una \textbf{función} de los naturales en los naturales $f : \mathbb{N} \to \mathbb{N}$
+        \[\mathtt{suc}(n) = \{(1,2), (2,3), (3,4), (4,5), \dots\}\]
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{..¿Qué?}{Qué es una función}
+    \begin{definition}
+        Una caja mágica que al introducirle \textit{ingredientes} devuelve \textit{resultados}.
+    \end{definition} \pause
+
+    ... con las siguientes condiciones: \pause
+
+    \begin{itemize}
+        \item La caja mágica \alert{siempre devuelve un resultado}. \pause
+        \item \alert{Por cada ingrediente}, la caja mágica generará \alert{solamente un resultado}.
+        \vspace{-2ex}
+        \begin{itemize}
+            \scriptsize
+            \item Sin embargo, ingredientes distintos pueden generar el mismo resultado.
+        \end{itemize} \pause
+        \item \alert{Por cada ingrediente}, la caja mágica generará \alert{siempre el mismo resultado}. \pause
+    \end{itemize}
+
+    A los ingredientes los llamamos \textbf{parámetros} y a los resultados \textbf{valores de retorno}.
+\end{frame}
+
+\begin{frame}{Ejemplos}{¿Qué es una función?}
+    La función \only<1-4>{\alert{$f(x) = 2x - 3$}}\only<5>{\alert{$\sin(x)$}}\only<6>{\alert{$\sqrt{x}$}} es una función porque, \textbf{usando cualquier número real}\dots \pause
+
+    \bigskip
+
+    \begin{itemize}[<+->]
+        \item Siempre devuelve un resultado
+        \item Nos da solamente un resultado
+        \item Nos da siempre el mismo resultado
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Elementos de una función}{¿Qué es una función}
+    Cuando la \textbf{definimos} \dots
+$$\alert<4>{\alert<2>{f}(\alert<3>{x})} = \alert<5>{7x^2 + 17x - 3}$$ \pause
+
+\begin{itemize}
+    \item \alert<2>{Nombre de la función}
+    \item \alert<3>{Parámetro}
+    \item \alert<4>{Encabezado de la función}
+    \item \alert<5>{Cuerpo de la función}    
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Elementos de una función}{¿Qué es una función}
+    Cuando la \textbf{evaluamos} por ejemplo, con $x = 2$ \dots
+$$\alert<4>{\alert<2>{f}(\alert<3>{2})} = 7(2)^2 + 17(2) - 3 = \alert<5>{59}$$ \pause
+
+\begin{itemize}
+    \item \alert<2>{Nombre de la función}
+    \item \alert<3>{Argumento}
+    \item \alert<4>{Llamada o evaluación de la función}
+    \item \alert<5>{Valor de retorno}
+\end{itemize}
+\end{frame}
+
+% what is a function
+% components of a function
+% function and procedures
+% procedures as scripts
+% built-in functions
+% documenting
+
+% \section*{Referencias}
+
+% \begin{frame}[t]{Referencias}
+    % \nocite{bibID01}
+    % \nocite{bibID02}
+
+    % \bibliographystyle{IEEE}
+    % \bibliography{biblio}
+% \end{frame}
+
+\end{document}
