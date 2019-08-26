@@ -1,0 +1,406 @@
+\documentclass[spanish, c, handout]{beamer}
+
+\usepackage[utf8]{inputenc}
+%\usepackage[spanish, mexico]{babel}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{ragged2e}
+\usepackage{mathrsfs}
+\usepackage{csquotes}
+\usepackage{listings}
+\usepackage[scaled]{beramono}
+\usepackage[T1]{fontenc}
+\usepackage{matlab-prettifier}
+\usepackage{graphicx}
+
+\renewcommand{\indent}{\hspace*{2em}}
+
+% \usepackage{tikz}
+
+% \usetikzlibrary{fit, shapes, arrows}
+
+% \usepackage{courier}
+% \usepackage{subfigure}
+% \usepackage{enumerate}
+% \usepackage{algorithmic}
+% \usepackage{algorithm}
+
+% \usepackage{listings}
+% \usepackage{lstlinebgrd}
+
+\usetheme{Boadilla}
+\usefonttheme[onlymath]{serif}
+
+\newcommand{\matlab}[1]{\lstinline[style=Matlab-editor]!#1!}
+\newcommand\blfootnote[1]{%
+\begingroup
+\renewcommand\thefootnote{}\footnote{#1}%
+\addtocounter{footnote}{-1}%
+\endgroup
+}
+
+\lstset
+{
+    language = Matlab,
+    style = Matlab-editor,
+    basicstyle = \mlttfamily\scriptsize,
+    escapechar = `,
+    numbers = left,
+    frame = tb,
+}
+
+\lstdefinestyle{output}
+{
+    language = {},
+    basicstyle = \mlttfamily\scriptsize,
+    escapechar = `,
+    numbers = none,
+    showtabs = false,
+   	showstringspaces = false,
+}
+
+% Sets the templates
+\definecolor{navyblue}{RGB}{0, 0, 128}
+\definecolor{crimson}{RGB}{128, 16, 0}
+
+\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{theorems}[numbered]
+
+\setbeamercolor{title}{fg=navyblue, bg=white}
+\setbeamercolor{frametitle}{fg=navyblue, bg=white}
+\setbeamercolor{structure}{fg=navyblue}
+\setbeamercolor{button}{fg=white,bg=navyblue}
+
+\setbeamercovered{transparent}
+
+\title{Funciones y Control de Flujo I}
+\subtitle{Solución de Problemas con Programación \\ (TC1017)}
+\author{
+    \texorpdfstring{
+        \begin{center}
+            M.C. Xavier Sánchez Díaz \\
+            \href{mailto:sax@tec.mx}{\texttt{sax@tec.mx}}
+        \end{center}
+    }
+    {M.C. Xavier Sánchez Díaz}
+}
+
+\institute[Tecnológico de Monterrey]{\includegraphics[scale=0.5]{../img/logo}}
+\date{}
+
+\begin{document}
+
+\setlength{\rightskip}{0pt}
+
+\begin{frame}[plain]
+    \titlepage        
+\end{frame}
+
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+\section{¿Qué es una función?}
+
+\begin{frame}{Definición formal}{¿Qué es una función?}
+    \begin{definition}
+        Una \alert{función} \textit{unitaria} de un conjunto $A$ en un conjunto $B$ es cualquier relación binaria $R$ de $A$ a $B$ que satisfaga la condición de que \textit{para todo} $a \in A$ existe \textit{exactamente un} $b \in B$ tal que $(a,b) \in R$.
+    \end{definition} \pause
+    \bigskip
+    Podemos describir una función $f$ de $A$ en $B$ como $f : A \to B$. \pause
+    \bigskip
+    \begin{exampleblock}{Ejemplo}
+        La relación \textit{sucesor} es una \textbf{función} de los naturales en los naturales $f : \mathbb{N} \to \mathbb{N}$
+        \[\mathtt{suc}(n) = \{(1,2), (2,3), (3,4), (4,5), \dots\}\]
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{..¿Qué?}{Qué es una función}
+    \begin{definition}
+        Una caja mágica que al introducirle \textit{ingredientes} devuelve \textit{resultados}.
+    \end{definition} \pause
+
+    ... con las siguientes condiciones: \pause
+
+    \begin{itemize}
+        \item La caja mágica \alert{siempre devuelve un resultado}. \pause
+        \item \alert{Por cada ingrediente}, la caja mágica generará \alert{solamente un resultado}.
+        \begin{itemize}
+            \scriptsize
+            \item Sin embargo, ingredientes distintos pueden generar el mismo resultado.
+        \end{itemize} \pause
+        \item \alert{Por cada ingrediente}, la caja mágica generará \alert{siempre el mismo resultado}. \pause
+    \end{itemize}
+
+    A los ingredientes los llamamos \textbf{parámetros} y a los resultados \textbf{valores de retorno}.
+\end{frame}
+
+\begin{frame}{Ejemplos}{¿Qué es una función?}
+    La función \only<1-4>{\alert{$f(x) = 2x - 3$}}\only<5>{\alert{$\sin(x)$}}\only<6>{\alert{$\sqrt{x}$}} es una función porque, \textbf{usando cualquier número real}\dots \pause
+
+    \bigskip
+
+    \begin{itemize}[<+->]
+        \item Siempre devuelve un resultado
+        \item Nos da solamente un resultado
+        \item Nos da siempre el mismo resultado
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Elementos de una función}{¿Qué es una función}
+    Cuando la \textbf{definimos} \dots
+$$\alert<4>{\alert<2>{f}(\alert<3>{x})} = \alert<5>{7x^2 + 17x - 3}$$ \pause
+
+\begin{itemize}
+    \item \alert<2>{Nombre de la función}
+    \item \alert<3>{Parámetro}
+    \item \alert<4>{Encabezado de la función}
+    \item \alert<5>{Cuerpo de la función}    
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Elementos de una función}{¿Qué es una función}
+    Cuando la \textbf{evaluamos} por ejemplo, con $x = 2$ \dots
+$$\alert<4>{\alert<2>{f}(\alert<3>{2})} = 7(2)^2 + 17(2) - 3 = \alert<5>{59}$$ \pause
+
+\begin{itemize}
+    \item \alert<2>{Nombre de la función}
+    \item \alert<3>{Argumento}
+    \item \alert<4>{Llamada o evaluación de la función}
+    \item \alert<5>{Valor de retorno}
+\end{itemize}
+\end{frame}
+
+\section{Funciones en MATLAB}
+
+\begin{frame}{Manos a la obra}{Funciones en MATLAB}
+
+    Todos los comandos en MATLAB están dados de alta internamente en el software como \textbf{funciones}. \pause
+
+    \bigskip
+
+    \begin{itemize}[<+->]
+        \itemsep2ex
+        \item \matlab{sin} necesita un parámetro para operar: \matlab{sin 67} significa $\sin(67)$
+        \item \matlab{sqrt} necesita un parámetro para operar: \matlab{squrt 2} significa $\sqrt{2}$
+        \item Tanto \matlab{sin} como \matlab{sqrt} cumplen con las reglas de siempre devolver resultados, sólo devolver un resultado, y devolver siempre el mismo.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{La palabra reservada \matlab{function}}{Funciones en MATLAB}
+    Para implementar funciones en MATLAB es necesario utilizar la palabra reservada \matlab{function}.
+    
+    \bigskip
+
+    En el editor:
+
+    \bigskip
+
+    \begin{columns}
+        \begin{column}{0.95\textwidth}
+            \begin{lstlisting}
+function `\mlplaceholder{return\_value}` = `\mlplaceholder{function\_name}`(`\mlplaceholder{parameter}`)
+    `\mlplaceholder{body of the function}`
+end
+            \end{lstlisting}
+        \end{column}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}[fragile]{La palabra reservada \matlab{function}}{Funciones en MATLAB}
+    \begin{columns}
+        \begin{column}{0.95\linewidth}
+            Editor:
+            \bigskip
+            \lstinputlisting{successor.m}
+
+            \bigskip
+            
+            Command Window:
+            \bigskip
+\begin{lstlisting}[style=output]
+>> successor(9)
+
+ans =
+
+     10
+\end{lstlisting}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{La palabra reservada \matlab{function}}{Funciones en MATLAB}
+    \begin{columns}
+        \begin{column}{0.95\linewidth}
+            Editor:
+            \bigskip
+            \lstinputlisting{donothing.m}
+
+            \bigskip
+            
+            Command Window:
+            \bigskip
+\begin{lstlisting}[style=output]
+>> donothing(5)
+
+ans =
+
+ 5
+\end{lstlisting}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+               
+\begin{frame}[fragile]{La palabra reservada \matlab{function}}{Funciones en MATLAB}
+    \begin{columns}
+        \begin{column}{0.95\linewidth}
+            Editor:
+            \bigskip
+            \lstinputlisting{fancyname.m}
+
+            \bigskip
+            
+            Command Window:
+            \bigskip
+\begin{lstlisting}[style=output]
+>> fancyname(2)
+
+ans =
+
+     15
+\end{lstlisting} 
+        \end{column}
+        
+    \end{columns}
+\end{frame}
+
+\section{Consideraciones adicionales}
+
+\begin{frame}{Funciones de más de un parámetro}{Consideraciones adicionales}
+    Hasta ahora hemos visto funciones \textit{unitarias}:
+
+    $$f(x) = 2x$$ \pause
+
+    Sin embargo, también puede haber funciones con una \alert{aridad} mayor a uno:
+
+    $$f(x, y) = 7x + 3y$$ \pause
+
+    ¿Se te ocurre alguna función matemática \textit{con nombre} que reciba más de un parámetro?
+
+\end{frame}
+
+\begin{frame}{Más preguntas interesantes con funciones}{Consideraciones adicionales}
+
+    Si podemos tener más de un parámetro, ¿podemos tener más de un valor de retorno? \pause
+
+    \bigskip
+
+    \begin{flushright}
+        \footnotesize \textit{Sí, usualmente ordenados y agrupados. Esto lo veremos más adelante, en estructuras de datos básicas}.
+    \end{flushright} \pause
+
+    \bigskip
+
+    ¿Puedo hacer una función que no me dé resultado alguno? \pause
+
+    \bigskip
+
+    \begin{flushright}
+        \footnotesize \textit{Sí, de hecho son muy frecuentes. Sin embargo, si no devuelve nada, ya no es propiamente una función.
+        A estas funciones sin valor de retorno les llamamos \alert{procedimientos} (procedures en inglés)}. \pause
+    \end{flushright}
+
+    \bigskip
+
+    ¿Puedo hacer una función que no reciba un parámetro? \pause
+
+    \begin{flushright}
+        \footnotesize \textit{Sí, sí puedes. Sin embargo no tiene mucho sentido. Lo recomendable es simplemente hacer una secuencia de instrucciones. A esta serie de instrucciones les llamamos \alert{scripts}}.
+    \end{flushright}
+
+\end{frame}
+
+\begin{frame}{En cómputo, todo es una función}{Consideraciones adicionales}
+    Específicamente en MATLAB, tenemos algunas redundancias para facilitar la escritura: \pause
+    
+    \begin{itemize}
+        \itemsep2.5ex
+        \item \matlab{plus (1, 2)} es lo mismo que \matlab{1 + 2} \pause
+        \item \matlab{a == 5} es lo mismo que \matlab{eq(a, 5)} \pause
+        \item \matlab{mtimes(5, 2)} es otra manera de decir \matlab{5 * 2} \pause
+    \end{itemize}
+
+    \bigskip
+
+    ¿Qué otros operadores conocemos?
+\end{frame}
+
+\begin{frame}{Funciones seccionadas (Piecewise)}{Consideraciones adicionales}
+    Hasta ahora, todas las funciones que hemos visto son hermosas porque son continuas y por tanto diferenciables.
+    Sin embargo, no todas las funciones son así\dots \pause
+
+    \bigskip
+
+    ¿Cuál es el valor absoluto de $2$? \pause ¿Y el valor absoluto de $-2$? \pause
+
+    $$|x| =\left\{ \begin{aligned}
+        -&x , &\text{si } x < 0 \\
+        &x ,  & \text{si } x \ge 0
+    \end{aligned} \right.
+    $$ \pause
+    
+    \bigskip
+
+    ¿Cómo representamos esto en MATLAB?
+\end{frame}
+
+\begin{frame}[fragile]{Primer encuentro con el control de flujo}{Consideraciones adicionales}
+    Los \alert{condicionales} son las \textbf{estructuras de control} de flujo más comunes.
+
+    \bigskip
+
+    \begin{columns}
+        \begin{column}{0.95\linewidth}
+\begin{lstlisting}
+if `\mlplaceholder{condition}`
+  % Si se cumple
+  `\mlplaceholder{do something}`
+else
+  % Si no se cumple
+  `\mlplaceholder{do something else}`
+end
+\end{lstlisting}
+        \end{column}
+        
+    \end{columns}
+
+\bigskip
+
+¿Puedes implementar la función del valor absoluto en MATLAB?
+\end{frame}
+
+% what is a function
+% components of a function
+% function and procedures
+% procedures as scripts
+% built-in functions
+% documenting
+
+% \section*{Referencias}
+
+% \begin{frame}[t]{Referencias}
+    % \nocite{bibID01}
+    % \nocite{bibID02}
+
+    % \bibliographystyle{IEEE}
+    % \bibliography{biblio}
+% \end{frame}
+
+\end{document}
