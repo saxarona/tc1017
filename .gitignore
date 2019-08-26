@@ -3,3 +3,7 @@
 *.snm
 *.vrb
 *-checkpoint.ipynb
+*.aux
+*.log
+*.out
+*.fls
