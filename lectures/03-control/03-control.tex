@@ -1,0 +1,291 @@
+\documentclass[spanish, c]{beamer}
+
+\usepackage[utf8]{inputenc}
+%\usepackage[spanish, mexico]{babel}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{ragged2e}
+\usepackage{mathrsfs}
+\usepackage{csquotes}
+\usepackage{listings}
+\usepackage[scaled]{beramono}
+\usepackage[T1]{fontenc}
+\usepackage{matlab-prettifier}
+\usepackage{graphicx}
+
+\renewcommand{\indent}{\hspace*{2em}}
+
+% \usepackage{tikz}
+
+% \usetikzlibrary{fit, shapes, arrows}
+
+% \usepackage{courier}
+% \usepackage{subfigure}
+% \usepackage{enumerate}
+% \usepackage{algorithmic}
+% \usepackage{algorithm}
+
+% \usepackage{listings}
+% \usepackage{lstlinebgrd}
+
+\usetheme{Boadilla}
+\usefonttheme[onlymath]{serif}
+
+\newcommand{\matlab}[1]{\lstinline[style=Matlab-editor]!#1!}
+\newcommand\blfootnote[1]{%
+\begingroup
+\renewcommand\thefootnote{}\footnote{#1}%
+\addtocounter{footnote}{-1}%
+\endgroup
+}
+
+\lstset
+{
+    language = Matlab,
+    style = Matlab-editor,
+    basicstyle = \mlttfamily\scriptsize,
+    escapechar = `,
+    numbers = left,
+    frame = tb,
+}
+
+\lstdefinestyle{output}
+{
+    language = {},
+    basicstyle = \mlttfamily\scriptsize,
+    escapechar = `,
+    numbers = none,
+    showtabs = false,
+   	showstringspaces = false,
+}
+
+% Sets the templates
+\definecolor{navyblue}{RGB}{0, 0, 128}
+\definecolor{crimson}{RGB}{128, 16, 0}
+
+\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{theorems}[numbered]
+
+\setbeamercolor{title}{fg=navyblue, bg=white}
+\setbeamercolor{frametitle}{fg=navyblue, bg=white}
+\setbeamercolor{structure}{fg=navyblue}
+\setbeamercolor{button}{fg=white,bg=navyblue}
+
+\setbeamercovered{transparent}
+
+\title{Control de Flujo}
+\subtitle{Solución de Problemas con Programación \\ (TC1017)}
+\author{
+    \texorpdfstring{
+        \begin{center}
+            M.C. Xavier Sánchez Díaz \\
+            \href{mailto:sax@tec.mx}{\texttt{sax@tec.mx}}
+        \end{center}
+    }
+    {M.C. Xavier Sánchez Díaz}
+}
+
+\institute[Tecnológico de Monterrey]{\includegraphics[scale=0.5]{../img/logo}}
+\date{}
+
+\begin{document}
+
+\setlength{\rightskip}{0pt}
+
+\begin{frame}[plain]
+    \titlepage        
+\end{frame}
+
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+\section{Control de Flujo}
+
+\begin{frame}{¿Qué es control de flujo?}{Control de Flujo}
+    
+    Un lenguaje de programación nos permite expresar la \alert<2->{manera en la que los componentes de ejecución se entrelazan} para realizar un cálculo. \pause
+
+    \bigskip \pause
+
+    De este modo, tenemos distintas herramientas a nuestra disposición para poder ejecutar comandos y obtener los resultados que queremos de distintas maneras: \pause
+
+    \bigskip
+
+    \begin{enumerate}
+        \item Usando \alert<8->{secuencias de instrucciones} \pause
+        \item \alert<8->{Seleccionando} entre distintas opciones \pause
+        \item \alert<8->{Repitiendo} procesos \pause
+        \item Haciendo múltiples procesos a la vez \pause
+    \end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Ejemplos}{Control de Flujo}
+    \begin{itemize}[<+->]
+        \itemsep3ex
+        \item ¿Me traes una coca? \alert<7>{Si} hay sin azúcar, mejor. \alert<7>{Si no}, la que sea.
+        \item Tengo que ir al cajero, \alert<6>{luego} a la lavandería y \alert<6>{luego} pasar por algo de comer.
+        \item Necesito que me ayudes a calificar \alert<8>{cada uno} de estos ejercicios.
+        \item Ya hablaremos de eso \alert<7>{cuando} seas más grande.
+        \item Vas a tener que buscar en \alert<8>{cada} rincón de la casa para encontrarlo.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Ejemplos}{Control de Flujo}
+
+    Podemos identificar con claridad los tres tipos de \textit{maneras} en que podemos entrelazar los componentes de las oraciones: \pause
+
+    \bigskip
+
+    \begin{itemize}
+        \item Instrucciones \alert{secuenciales} \only<2>{(Primero voy acá, luego allá\dots)} \pause
+        \item Instrucciones \alert{condicionales} \only<3>{(Si esto, entonces aquello, si no\dots)} \pause
+        \item Instrucciones \alert{cíclicas} \only<4>{(Para cada uno de estos, haz tal y tal\dots)} \pause
+    \end{itemize}
+
+    \bigskip
+    
+    Estos son las tres \textbf{estructuras de control de flujo} que revisaremos en este curso.
+\end{frame}
+
+\section{Representaciones del control de flujo}
+
+\begin{frame}{Secuencias}{Representaciones del control de flujo}
+    \blfootnote{Paráfrasis de Stover, C. y Weisstein, E., de \textit{Set} en MathWorld: \url{http://mathworld.wolfram.com/Set.html}}
+    Para comprender qué es una \textbf{secuencia}, hay que estudiar primero qué es un \alert{conjunto}. \pause
+
+    \bigskip
+
+    \begin{block}{Conjunto}
+        \begin{displayquote}
+            A \alert{set} is a finite or infinite \textbf{collection} of objects in which order has no significance, and multiplicity is ignored.
+            Members of a set are referred to as \textbf{elements} and the notation $a \in A$ is used to denote that $a$ is an element of a set $A$.
+        \end{displayquote}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Secuencias}{Representaciones del control de flujo}
+    \begin{exampleblock}{Ejemplos}
+        \begin{itemize}[<+->]
+            \item El conjunto de números naturales $\mathbb{N} = \{1, 2, 3, \dots\}$
+            \item El conjunto de funciones que tiene el MATLAB
+            \item El conjunto de estudiantes del campus
+            \item El conjunto de estudiantes en la clase
+            \item El conjunto de estudiantes en el salón
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Secuencias}{Representaciones del control de flujo}
+    Una \alert{secuencia} es un \textbf{conjunto} el cual está \alert{ordenado}. \pause
+
+    \begin{exampleblock}{Ejemplo}
+        Los números naturales son un conjunto ordenado:
+
+        $$\mathbb{N} = \langle 1, 2, 3, 4, \dots \rangle$$
+        
+    \end{exampleblock} \pause
+
+    Una receta de cocina es una \textbf{secuencia de instrucciones} porque el orden es importante. \pause
+    
+    Una \textbf{guión} es también una secuencia de diálogos, pues una obra de teatro o una película tienen una naturaleza secuencial.
+    Este \textbf{guión} se llama en inglés \textbf{script}.
+\end{frame}
+
+\begin{frame}[fragile]{Secuencias}{Representaciones del control de flujo}
+
+    Los \alert{scripts} son naturalmente secuenciales:
+
+    \bigskip
+
+    \begin{columns}
+        \begin{column}{0.95\linewidth}
+            \lstinputlisting{script.m}
+        \end{column}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}{Condicionales}{Representaciones del control de flujo}
+    \blfootnote{Paráfrasis de Weisstein, E., de \textit{Implies} en MathWorld: \url{http://mathworld.wolfram.com/Implies.html}}
+
+    Los estatutos condicionales \textit{también} tienen una base matemática: \pause
+
+    \bigskip
+
+    \begin{block}{Implicación lógica}
+        \begin{displayquote}
+            ``Implies'' is the connective in \textbf{propositional calculus} which has the meaning that ``if $A$ is true, then $B$ is also true''.
+            In formal terminology, the term conditional is often used to refer to this connective. The symbol used to denote the implication is $$A \implies B$$
+        \end{displayquote}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Condicionales}{Representaciones del control de flujo}
+
+    Los condicionales son de naturaleza \textbf{disyuntiva}:
+
+    \bigskip
+
+    \begin{columns}
+        \begin{column}{0.9\linewidth}
+            \lstinputlisting{positiveornot.m}
+        \end{column}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}{Ciclos}{Representaciones del control de flujo}
+    Los \alert{ciclos}, también conocidos como \textbf{bucles}, son estructuras de flujo cuya representación matemática es más bien implícita. \pause
+
+    \bigskip
+
+    ¿Cuál es la suma de todos los números que están en un reloj análogo? \pause Pensemos un poco\dots
+\end{frame}
+
+\begin{frame}{Ciclos}{Representaciones del control de flujo}
+
+    \begin{columns}
+        \begin{column}{0.5\linewidth}
+            \begin{align*}
+                R = & 12  + 11 + 10 \\
+                  + &  9 + 8 + 7 \\
+                  + &  6 + 5 + 4 \\
+                  + &  3 + 2 + 1 \\
+                  = & \mathbf{78}
+            \end{align*} \pause
+        \end{column}
+
+        \begin{column}{0.5\linewidth}
+            Hay que sumar el 12, más el 11, más el 10, más el\dots hay un ciclo que podemos identificar, donde el \alert{valor base} va cambiando de uno en uno\dots \pause
+        \end{column}
+    \end{columns}
+
+    Esta suma, que se lee como \textit{la suma de $i$, desde 1 hasta 12}, se representa de la siguiente manera:
+    
+    $$\sum\limits_{i=1}^{i=12} i = 78$$
+\end{frame}
+
+% What is control flow
+% why is it important
+% does it exist in math?
+% how to represent it
+% how to represent it in matlab
+% practical cases
+
+% \section*{Referencias}
+
+% \begin{frame}[t]{Referencias}
+    % \nocite{bibID01}
+    % \nocite{bibID02}
+
+    % \bibliographystyle{IEEE}
+    % \bibliography{biblio}
+% \end{frame}
+
+\end{document}
