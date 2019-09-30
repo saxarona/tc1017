@@ -85,7 +85,7 @@
 \begin{center}
 {\huge Solución de Problemas con Programación (TC1017)}\\[1.5ex]
 {\large \textbf{Tarea 04}\\[1.5ex] %You should put your name here
-23.03.19} %You should write the date here.
+30.09.19} %You should write the date here.
 \end{center}
 
 \vspace{0.2 cm}
@@ -147,7 +147,7 @@ El archivo debe tener la función y su documentación \textbf{(en la segunda lí
     function output = bolsas(A)
     % NAME: Arturo Gonzalez
     % STUDENT ID: A01170065
-    % BOLSAS output = gas (A)
+    % BOLSAS output = bolsas (A)
     % BOLSAS gets a matrix A and calculates the unit price of container bags,
     % depending on the type the volume, weight and materials.
     % You can use it like this:
@@ -162,6 +162,7 @@ El archivo debe tener la función y su documentación \textbf{(en la segunda lí
 
 \begin{itemize}
     \item Recuerda que es una función. No estamos buscando el resultado, sino una solución genérica, para calcular los precios unitarios sin importar el número de órdenes en la matriz.
+    \item Si vas a iterar en la matriz, es necesario que sepas cuántas órdenes son. Para eso, sugiero que revises lo que hace el siguiente código: \matlab{[row columns] = size(A)}
     \item Si lo crees necesario, haz un diagrama de flujo que te ayude a guiarte en el proceso.
     \item Asegúrate de estar corriendo el MATLAB en el mismo lugar donde guardaste tus archivos.
     \item Asegúrate de que tu archivo tiene nombre en minúsculas, sin espacios ni acentos o símbolos. 
