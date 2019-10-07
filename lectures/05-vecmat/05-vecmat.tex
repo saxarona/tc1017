@@ -1,0 +1,427 @@
+\documentclass[spanish, c]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, mexico]{babel}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{ragged2e}
+\usepackage{mathrsfs}
+\usepackage{csquotes}
+\usepackage{listings}
+\usepackage[scaled]{beramono}
+\usepackage[T1]{fontenc}
+\usepackage{matlab-prettifier}
+\usepackage{graphicx}
+
+\renewcommand{\indent}{\hspace*{2em}}
+
+% \usepackage{tikz}
+
+% \usetikzlibrary{fit, shapes, arrows}
+
+% \usepackage{courier}
+% \usepackage{subfigure}
+% \usepackage{enumerate}
+% \usepackage{algorithmic}
+% \usepackage{algorithm}
+
+% \usepackage{listings}
+% \usepackage{lstlinebgrd}
+
+\usetheme{Boadilla}
+\usefonttheme[onlymath]{serif}
+
+\newcommand{\matlab}[1]{\lstinline[style=Matlab-editor]!#1!}
+\newcommand\blfootnote[1]{%
+\begingroup
+\renewcommand\thefootnote{}\footnote{#1}%
+\addtocounter{footnote}{-1}%
+\endgroup
+}
+
+\lstset
+{
+    language = Matlab,
+    style = Matlab-editor,
+    basicstyle = \mlttfamily\scriptsize,
+    escapechar = `,
+    numbers = left,
+    frame = tb,
+}
+
+\lstdefinestyle{output}
+{
+    language = {},
+    basicstyle = \mlttfamily\scriptsize,
+    escapechar = `,
+    numbers = none,
+    showtabs = false,
+   	showstringspaces = false,
+}
+
+% Sets the templates
+\definecolor{navyblue}{RGB}{0, 0, 128}
+\definecolor{crimson}{RGB}{128, 16, 0}
+
+\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{theorems}[numbered]
+
+\setbeamercolor{title}{fg=navyblue, bg=white}
+\setbeamercolor{frametitle}{fg=navyblue, bg=white}
+\setbeamercolor{structure}{fg=navyblue}
+\setbeamercolor{button}{fg=white,bg=navyblue}
+
+\setbeamercovered{transparent}
+
+\title{Vectores y Matrices}
+\subtitle{Solución de Problemas con Programación \\ (TC1017)}
+\author{
+    \texorpdfstring{
+        \begin{center}
+            M.C. Xavier Sánchez Díaz \\
+            \href{mailto:sax@tec.mx}{\texttt{sax@tec.mx}}
+        \end{center}
+    }
+    {M.C. Xavier Sánchez Díaz}
+}
+
+\institute[Tecnológico de Monterrey]{\includegraphics[scale=0.5]{../img/logo}}
+\date{}
+
+\begin{document}
+
+\setlength{\rightskip}{0pt}
+
+\begin{frame}[plain]
+    \titlepage        
+\end{frame}
+
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+\section{Vectores}
+
+\begin{frame}{Teoría aburrida}{Vectores}
+    \begin{definition}
+            Un vector $n$-dimensional es una lista de $n$ números donde:
+
+            \begin{itemize}
+                \item La adición vectorial es conmutativa.
+                \item La adición vectorial es asociativa.
+                \item Existe la identidad aditiva.
+                \item Existe la adición inversa.
+                \item La multiplicación escalar es asociativa.
+                \item La adición escalar es distributiva.
+                \item La adición vectorial es distributiva.
+                \item Existe la identidad multiplicativa.
+            \end{itemize}
+    \end{definition}
+\end{frame}
+
+\begin{frame}{La adición vectorial es conmutativa}{Vectores}
+    Es decir que no importa el orden al sumar dos vectores:
+
+    $$\mathbf{x} + \mathbf{y} = \mathbf{y} + \mathbf{x}$$
+
+    \bigskip
+
+    \textbf{Ejemplo práctico}: Si te mueves dos cuadras hacia el sur y una hacia el oriente. llegas al mismo lugar que moviéndote una cuadra hacia el oriente y luego dos hacia el sur.
+    
+\end{frame}
+
+\begin{frame}{La adición vectorial es asociativa}{Vectores}
+    
+    $$(\mathbf{x} + \mathbf{y}) + \mathbf{z} = \mathbf{x} + (\mathbf{y} + \mathbf{z})$$
+
+    \textbf{Ejemplo Práctico}: Si te avientas un viaje de acá a la esquina, descansas, y luego a la farmacia y al parque de un jalón, llegas al mismo lugar que si te avientas un viaje de acá a la esquina y a la farmacia de un jalón, descansas, y luego vas al parque.
+
+\end{frame}
+
+\begin{frame}{Existe la identidad aditiva}{Vectores}
+    
+    $$\mathbf{x} + 0 = 0 + \mathbf{x} = \mathbf{x}$$
+
+    \textbf{Ejemplo Práctico}: Si vas al parque, y te quedas ahí, llegas al mismo lugar que si vas al parque (duh).
+
+\end{frame}
+
+\begin{frame}{Existe la adición inversa}{Vectores}
+
+    $$\forall \mathbf{x}, \exists -\mathbf{x} \text{ tal que } \mathbf{x} + (-\mathbf{x}) = 0$$
+
+    \textbf{Ejemplo práctico}: Para cada ruta que existe para llegar a algún lugar, existe otra ruta (la misma, de regreso) que si la sigues, llegas al mismo punto de donde saliste.
+\end{frame}
+
+\begin{frame}{La multiplicación escalar es asociativa}{Vectores}    
+    
+    $$r(s \mathbf{x}) = (rs)\mathbf{x}$$
+
+    \textbf{Ejemplo práctico}: Estás a 5 metros de mí en cierta dirección. Si te mueves el doble de distancia, y luego el triple, estarás en el mismo punto que si te mueves seis veces en esa dirección desde tu posición original.
+
+\end{frame}
+
+\begin{frame}{La adición escalar es distributiva}{Vectores}
+    
+    $$(r + s)\mathbf{x} = r\mathbf{x} + s\mathbf{x}$$
+
+    \textbf{Ejemplo práctico}: Estás a 5 metros de mí en cierta dirección. Si te mueves 7 veces esa distancia, hacia allá, estarás a 35 metros de mí. El lugar al que llegarías, sería el mismo lugar al que llegarías si te mueves 20 metros para allá, y luego 15 metros más en la misma dirección.
+
+\end{frame}
+
+\begin{frame}{La adición vectorial es distributiva}{Vectores}
+    
+    $$r(\mathbf{x} + \mathbf{y}) = r\mathbf{x} + r\mathbf{y}$$
+
+    \textbf{Ejemplo práctico}: Si vamos 2 cuadras al sur y dos al oriente llegamos a la farmacia, que está a 100 metros de la iglesia desde la que salimos. Si me muevo el doble de esa distancia, alejándome de la iglesia, llego a la escuela, que está en el mismo lugar al que llegaría si me moviera 4 cuadras al sur y luego cuatro cuadras al oriente.
+\end{frame}
+
+\begin{frame}{Existe la identidad multiplicativa}{Vectores}
+
+    $$1\mathbf{x} = \mathbf{x}$$
+
+    \textbf{Ejemplo práctico}: Si me muevo de la escuela a la iglesia, llegaría al mismo lugar que si recorriera una vez esa distancia, en esa dirección desde mi punto de salida (duh)
+
+\end{frame}
+
+\section{Matrices y transformaciones lineales}
+
+\begin{frame}{Teoría aburrida}{Matrices y transformaciones lineales}    
+    \begin{definition}
+        Una \alert{matriz} es una manera conveniente de guardar una \textbf{transformación lineal}.
+    \end{definition}
+
+    \begin{definition}
+        Una \alert{transformación lineal} es una función de la forma $T: V \to W$ de tal manera que siempre se cumple lo siguiente:
+
+        \begin{itemize}
+            \item $T(\mathbf{v_1} + \mathbf{v_2}) = T(\mathbf{v_1}) + T(\mathbf{v_2})$ \quad (Adición de vectores)
+            \item $T(\alpha\mathbf{v}) = \alpha T(\mathbf{v})$ \quad (Multiplicación escalar)
+        \end{itemize}
+
+        considerando que $\mathbf{v} \in V$, o sea, $\mathbf{v}$ es un vector.
+    \end{definition}
+
+    \bigskip
+
+    En otras palabras, una manera sencilla de guardar \textbf{qué hacer} a \textbf{cada uno de los componentes} de un vector.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Adición de vectores}{Matrices y transformaciones lineales}
+
+    \textbf{Mi transformación}: \textit{el doble del primero y triple del segundo}
+    
+    \bigskip
+
+    $$T = \begin{bmatrix}
+        2 & 0 \\
+        0 & 3
+    \end{bmatrix} = $$
+    
+    $$
+    \begin{bmatrix}
+    \text{influencia de } x \text{ sobre } x & \text{influencia de } x \text{ sobre } y \\
+    \text{influencia de } y \text{ sobre } x & \text{influencia de } y \text{ sobre } y
+    \end{bmatrix}$$
+
+    \bigskip
+
+    \dots Algo así.
+
+    \framebreak
+
+    $$T(\mathbf{v_1} + \mathbf{v_2}) = T(\mathbf{v_1}) + T(\mathbf{v_2})$$
+
+    \bigskip
+
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{align*}
+                & T \left (
+                \begin{bmatrix}
+                    2 \\ 1
+                \end{bmatrix}
+                 +
+                 \begin{bmatrix}
+                    3 \\ 2 
+                 \end{bmatrix} \right ) = \\[2ex]
+                 & =
+                 \begin{bmatrix}
+                    2, 0 \\
+                    0 , 3
+                \end{bmatrix} \left(
+                    \begin{bmatrix}
+                        2 \\ 1
+                    \end{bmatrix}
+                     +
+                     \begin{bmatrix}
+                        3 \\ 2 
+                     \end{bmatrix} \right )\\
+                 & =
+                 \begin{bmatrix}
+                    2, 0 \\
+                    0 , 3
+                \end{bmatrix}
+                 \begin{bmatrix}
+                     5 \\ 3
+                 \end{bmatrix} \\
+                & =
+                \begin{bmatrix}
+                    10 \\ 9
+                \end{bmatrix}
+            \end{align*}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{align*}
+                & T \left( \begin{bmatrix}
+                    2 \\ 1
+                \end{bmatrix} \right) +
+                T \left( \begin{bmatrix}
+                    3 \\ 2
+                \end{bmatrix} \right) = \\[2ex]
+                & =
+                \begin{bmatrix}
+                    2, 0\\
+                    0, 3
+                \end{bmatrix}
+                \begin{bmatrix}
+                    2 \\ 1
+                \end{bmatrix}
+                 +
+                \begin{bmatrix}
+                    2, 0 \\
+                    0, 3
+                \end{bmatrix}
+                \begin{bmatrix}
+                    3 \\ 2
+                \end{bmatrix} \\
+                & =
+                \begin{bmatrix}
+                    4 \\ 3
+                \end{bmatrix} +
+                \begin{bmatrix}
+                    6 \\ 6
+                \end{bmatrix} \\
+                & =
+                \begin{bmatrix}
+                    10 \\ 9
+                \end{bmatrix}
+            \end{align*}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Multiplicación escalar}{Matrices y transformaciones lineales}
+
+    \textbf{Misma transformación}: \textit{el doble del primero y triple del segundo}
+    
+    \bigskip
+
+    $$T = \begin{bmatrix}
+        2 & 0 \\
+        0 & 3
+    \end{bmatrix}$$
+
+    $$T(\alpha\mathbf{v}) = \alpha T(\mathbf{v})$$
+
+    \bigskip
+
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{align*}
+                & T \left ( 1.5 
+                \begin{bmatrix}
+                    2 \\ 1
+                \end{bmatrix} \right ) = \\[2ex]
+                & =
+                \begin{bmatrix}
+                    2 & 0 \\
+                    0 & 3
+                \end{bmatrix}
+                \begin{bmatrix}
+                    3 \\ 1.5
+                \end{bmatrix} \\
+                & = 
+                \begin{bmatrix}
+                    6 \\ 4.5
+                \end{bmatrix}
+            \end{align*}
+        \end{column}
+
+        \begin{column}{0.5\textwidth}
+            \begin{align*}
+            & 1.5 T \left(
+            \begin{bmatrix}
+                2 \\ 1
+            \end{bmatrix}
+                \right) = \\[2ex]
+            & = 1.5 \left(
+                \begin{bmatrix}
+                    2 & 0 \\
+                    0 & 3
+                \end{bmatrix}
+                \begin{bmatrix}
+                    2 \\ 1
+                \end{bmatrix} \right ) \\
+            & = 1.5 \begin{bmatrix}
+                4 \\ 3
+            \end{bmatrix} =
+            \begin{bmatrix}
+                6 \\ 4.5
+            \end{bmatrix}
+            \end{align*}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{Ejemplo}
+
+\begin{frame}{Matrices de rotación}{Ejemplo}
+    El actuador de un robot está en la siguiente posición (coordenadas en el espacio en $x, y, z$):
+    $$\begin{bmatrix}
+        2 \\ 5 \\ -2
+    \end{bmatrix}$$
+    El cual debe rotar 90 grados en el eje $x$. Si $\theta = 90$°, entonces podemos representar su posición nueva `transformando' su vieja posición con una matriz de rotación:
+
+    \bigskip
+
+    $$\begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & \cos 90 & -\sin 90 \\
+        0 & \sin 90 & \cos 90
+    \end{bmatrix} \begin{bmatrix}
+        2 \\ 5 \\ -2
+    \end{bmatrix} = \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 0 & -1 \\
+        0 & 1 & 0
+    \end{bmatrix} \begin{bmatrix}
+        2 \\ 5 \\ -2
+    \end{bmatrix}
+    = \begin{bmatrix}
+        2 \\ -2 \\ -5
+    \end{bmatrix}$$
+\end{frame}
+
+% What is control flow
+% why is it important
+% does it exist in math?
+% how to represent it
+% how to represent it in matlab
+% practical cases
+
+% \section*{Referencias}
+
+% \begin{frame}[t]{Referencias}
+    % \nocite{bibID01}
+    % \nocite{bibID02}
+
+    % \bibliographystyle{IEEE}
+    % \bibliography{biblio}
+% \end{frame}
+
+\end{document}
