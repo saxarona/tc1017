@@ -1,0 +1,293 @@
+\documentclass[11pt]{article}
+%\usepackage[a4paper]{geometry}
+\usepackage{fullpage}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, mexico]{babel}
+\usepackage{lipsum}
+\usepackage{bm}
+\usepackage{upgreek}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage{csquotes}
+\usepackage{listings}
+\usepackage{booktabs}
+%\usepackage{helvet}
+\usepackage[numbered]{matlab-prettifier}
+
+
+% mathtools for: Aboxed (put box on last equation in align envirenment)
+\usepackage{microtype} %improves the spacing between words and letters
+
+%% COLOR DEFINITIONS
+
+\usepackage{xcolor} % Enabling mixing colors and color's call by 'svgnames'
+
+\definecolor{MyColor1}{rgb}{0.2,0.4,0.6} %mix personal color
+\newcommand{\textb}{\color{Black} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\blue}{\color{MyColor1} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\blueb}{\color{MyColor1} \usefont{OT1}{lmss}{b}{n}}
+\newcommand{\red}{\color{LightCoral} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\green}{\color{Turquoise} \usefont{OT1}{lmss}{m}{n}}
+
+\DeclareMathOperator{\trace}{trace}
+\DeclareMathOperator{\diag}{diag}
+
+%% FONTS AND COLORS
+
+%    SECTIONS
+
+\usepackage{titlesec}
+\usepackage{sectsty}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%set section/subsections HEADINGS font and color
+%\sectionfont{\color{Black}}  % sets colour of sections
+%\subsectionfont{\color{Black}}  % sets colour of sections
+
+%set section enumerator to arabic number (see footnotes markings alternatives)
+\renewcommand\thesection{\arabic{section}} %define sections numbering
+%\renewcommand\thesubsection{\thesection\arabic{subsection}} %subsec.num.
+
+%define new section style
+\newcommand{\mysection}{
+\titleformat{\section} [runin] {\usefont{OT1}{lmss}{b}{n}\color{MyColor1}} 
+{\thesection} {3pt} {} } 
+
+
+% %	CAPTIONS
+% \usepackage{caption}
+% \usepackage{subcaption}
+% %%%%%%%%%%%%%%%%%%%%%%%%
+% \captionsetup[figure]{labelfont={color=Turquoise}}
+
+
+%		!!!EQUATION (ARRAY) --> USING ALIGN INSTEAD
+%using amsmath package to redefine eq. numeration (1.1, 1.2, ...) 
+\renewcommand{\theequation}{\thesection\arabic{equation}}
+
+\setlength\parindent{0pt}
+
+
+
+
+\makeatletter
+\let\reftagform@=\tagform@
+\def\tagform@#1{\maketag@@@{(\ignorespaces\textcolor{red}{#1}\unskip\@@italiccorr)}}
+\renewcommand{\eqref}[1]{\textup{\reftagform@{\ref{#1}}}}
+\makeatother
+% \usepackage{hyperref}
+% \hypersetup{colorlinks=true}
+
+% For labeling top of page on every page but first one:
+%\usepackage{fancyhdr}
+
+\newcommand{\myclass}{TC1017 -- Solución de Problemas con Programación} % Class name?
+\newcommand{\mytitle}{Examen 2} % Title of document?
+\newcommand{\mydate}{21.10.19} % The date?
+\newcommand{\myheader}{
+    \begin{flushleft}
+        \large
+        Nombre: \rule{13 cm}{0.4mm} \\
+        Matrícula: \rule{5 cm}{0.4mm} \hfill Fecha: \mydate
+    \end{flushleft}
+}
+
+\newcommand{\matlab}[1]{\lstinline[style=Matlab-editor]!#1!}
+\newcommand{\shortresponserule}{{\large\rule{5 cm}{0.3mm}}}
+\newcommand{\veryshortresponserule}{{\large\rule{3 cm}{0.3mm}}}
+
+\title{
+    \myclass \\
+    \textbf{\mytitle} \\
+    \myheader
+    \date{}
+}
+
+% You can set the date automatically by replacing "date goes here" with "\today"
+
+% \renewcommand{\rmdefault}{phv} % Arial Font
+\renewcommand{\familydefault}{\sfdefault}
+
+% \pagestyle{fancy}
+% \fancyhead{}
+% \fancyhead[CO,CE]{{\small{{\bf{\mytitle}} -- \myclass}}}
+
+\begin{document}
+\maketitle
+
+\vspace{-1.5cm}
+
+Lee cuidadosamente y contesta lo que se te pide.
+Este examen es individual.
+
+Al momento de contestar, intenta ser lo más explícito posible: se calificará con base en lo que esté escrito. %y se considerará el proceso aún cuando la respuesta final esté errada.
+Recuerda que puedes revisar material de la clase, el libro de texto o tus notas.
+Administra bien tu tiempo.
+Buena suerte.
+
+\vspace{1.5ex}
+
+El tipo de tu examen dependerá de tu matrícula.
+
+$$ student = 
+\begin{cases}
+   Torr \, Olgosso & = [2, 0.5, 1, 1, 0.7] \text{ si el último dígito de tu matrícula } \mathtt{mod} \, 3 = 0 \\
+   Antalie \, Napora & = [0.1, 3, 2, 1, 0.2] \text{ si el último dígito de tu matrícula } \mathtt{mod} \, 3 = 1 \\
+   Xandro \, Blooddrinker & = [3, 3, 0.5, 2, 3] \text{ si el último dígito de tu matrícula } \mathtt{mod} \, 3 = 2 \\
+\end{cases}
+$$
+
+\vspace{1.5ex}
+
+Mi matrícula es \shortresponserule,
+así que el último dígito de mi ID $\mathtt{mod}$ 3 es \rule{1cm}{0.4mm}.
+
+Por tanto me toca usar a \shortresponserule \quad (2 \%)
+
+\vspace{1.5ex}
+
+\section{Técnicas de primer año (60\%)}
+
+Analiza cada uno de los siguientes códigos que sirven para calcular la fuerza de las técnicas que los estudiantes deben aprender el primer año de su estancia en el instituto.
+
+\subsection{Split Arrow}
+
+\lstinputlisting[style=Matlab-editor]{split.m}
+
+\begin{itemize}
+    \item \matlab{split_arrow(student(1))} \hfill \shortresponserule
+\end{itemize}
+
+\subsection{Riposte}
+
+\lstinputlisting[style=Matlab-editor]{riposte.m}
+
+\begin{itemize}
+    \item \matlab{riposte(student(2))} \hfill \shortresponserule
+\end{itemize}
+
+\subsection{Heavy Strike}
+
+\lstinputlisting[style=Matlab-editor]{heavy_strike.m}
+\begin{itemize}
+    \item \matlab{heavy_strike(student(3))} \hfill \shortresponserule
+\end{itemize}
+
+\subsection{Static Strike}
+
+\lstinputlisting[style=Matlab-editor]{static_strike.m}
+\begin{itemize}
+    \item \matlab{static_strike(student(4))} \hfill \shortresponserule
+\end{itemize}
+
+\subsection{Frenzy}
+
+\lstinputlisting[style=Matlab-editor]{frenzy.m}
+\begin{itemize}
+    \item \matlab{frenzy(student(5))} \hfill \shortresponserule
+\end{itemize}
+
+\pagebreak
+
+\section{Técnicas de segundo año (30 \%)}
+
+Los códigos anteriores generan los costos de cada una de las técnicas que $student$ debe aprender en el tronco común de su estancia en la escuela de combate.
+Sin embargo, a partir del segundo año pueden escoger \textbf{uno de los siguientes dos cursos, o ambos}:
+
+\subsection{Tornado Shot}
+
+El tiro tornado---como se le conoce en español---es una de las técnicas más eficientes para atacar a múltiples oponentes al mismo tiempo.
+Para dominar esta técnica, se analizan múltiples factores como la distancia a la que debe hacerse el tiro inicial, la fuerza aplicada a la flecha y el número de proyectiles y oponentes cercanos. Por ello, el instituto te ha facilitado la siguiente tabla:
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{@{}ccccc@{}}
+    \toprule
+    \textbf{DTI} & \textbf{FA} & \textbf{NP} & \textbf{OC} & \textbf{DE} \\ \midrule
+    2 & 78 & 3 & 1 & x\\
+    2 & 85 & 3 & 2 & x\\
+    3 & 70 & 3 & 3 & x\\
+    3 & 85 & 5 & 2 & x\\
+    1 & 50 & 5 & 1 & x\\ \bottomrule
+    \end{tabular}
+\end{table}
+
+Sabiendo que el daño esperado \textbf{DE} se calcula de la siguiente manera:
+
+$$DE = \frac{OC^2}{NP} \left(FA + \frac{FA + 1.06}{DTI} \right)$$
+
+\bigskip
+
+Escribe \textbf{dos funciones}:
+\begin{enumerate}
+    \item Una función que reciba los datos necesarios de un tiro y que devuelva el daño esperado del mismo (15 \%)
+    \item Una función que reciba la matriz mostrada y devuelva la misma matriz con la columna \textbf{DE} correctamente calculada (15 \%)
+    \begin{itemize}
+        \item \textbf{Reto}: Utiliza operaciones vectoriales en esta función en lugar de un \matlab{for} (+2 $\bigstar$)
+    \end{itemize}
+\end{enumerate}
+
+\pagebreak
+
+\subsection{Power Siphon}
+
+A diferencia de \textit{Tornado Shot}, que sufre una fuerte penalización entre menos oponentes cercanos encuentre, \textit{Power Siphon} es una mejor opción para el combate uno a uno a distancia.
+Sin embargo, esta técnica gana poder sacrificando cada una de tus cargas de poder de concentración (\textbf{PC}) y por cada punto de equilibrio (\textbf{Qu}) de la mente, al igual que por cada nivel de abstracción espiritual (\textbf{Lv}).
+
+¿Cuál es la clave para maximizar el daño final (\textbf{FD})? Nadie está seguro, pero te han proporcionado las siguientes observaciones:
+
+% each power charge grants 10% of FD
+% each Qu grants +1% FD
+% each Lv grants +1 FD
+
+\begin{table}[htbp]
+    \footnotesize
+    \centering
+    \begin{tabular}{@{}cccc@{}}
+    \toprule
+    \textbf{Lv} & \textbf{Qu} & \textbf{PC}  & \textbf{FD} \\ \midrule
+    1 & 0 & 0 & 125 \\
+    2 & 0 & 0 & 126 \\
+    3 & 0 & 0 & 127 \\
+    4 & 1 & 0 & 129.28 \\
+    5 & 1 & 0 & 130.29 \\
+    6 & 1 & 0 & 131.3 \\
+    \midrule
+    1 & 0 & 1 & 137.5 \\
+    1 & 0 & 2 & 150 \\
+    1 & 0 & 3 & 162.5 \\
+    6 & 5 & 3 & 175.5 \\
+    21 & 23 & 7 & 279.85\\ \bottomrule
+    \end{tabular}
+\end{table}
+
+Sabiendo que el daño base (sin modificaciones) es siempre 125, contesta las siguientes preguntas y finalmente calcula lo que se pide:
+
+\begin{itemize}
+    \item ¿Cuánto daño se obtiene por un nivel de abstracción espiritual $Lv$? (1 \%) \veryshortresponserule
+    \item ¿Cuánto daño se obtiene por cada punto de equilibrio $Qu$? (2 \%) \veryshortresponserule
+    \item ¿Cuánto daño se obtiene por cada carga de poder de concentración $PC$? (2 \%) \veryshortresponserule
+\end{itemize}
+
+\bigskip
+
+Escribe \textbf{la función} matemática que modela el daño final de \textit{Power Siphon} (10 \%) y posteriormente escribe el código en MATLAB necesario para implementarla (15 \%)
+
+\section{Feedback (8 \%)}
+
+\begin{enumerate}[label=\alph*)]
+    \item Dibuja al estudiante que te tocó y ponle nombre a su instituto (2 \%)
+    \item Escribe una opinión breve sobre el modelo de examen. Si se pueden atacar situaciones fantásticas con programación, ¿crees que sirva para situaciones reales? ¿Por qué? (6 \%)
+\end{enumerate}
+
+\section{Reto (+8 $\bigstar$)}
+
+Escribe el Diagrama de flujo de cualquiera de las técnicas de segundo año.
+
+\vfill
+
+\textbf{De acuerdo con el Código de Ética del Tecnológico de Monterrey, mi desempeño en esta actividad estará guiado por la integridad académica.}
+\end{document}
